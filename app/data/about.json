@@ -1,0 +1,114 @@
+{
+  "title" : "About title",
+  "blocks" : [
+    {
+      "title" : "Eyes of an Artist",
+      "image" : "",
+      "subTitle" : "",
+      "description" : [
+        "Lorem ipsum dolor sit amet, mucius legendos ut qui, vel tempor postea constituto eu. Prompta veritus mei ut, eum tollit vivendo at. Eu simul melius est. Vis zril vocibus eu, laudem officiis iudicabit eam cu.",
+        "At per equidem lobortis imperdiet, ei his delectus omittantur. Mei ne ludus omnium integre, ne nec vitae menandri eleifend, pri nostrum mentitum invidunt an."
+      ],
+    },
+    {
+      "title" : "Mind of a Nerd",
+      "image" : "",
+      "subTitle" : "",
+      "description" : [
+        "Lorem ipsum dolor sit amet, mucius legendos ut qui, vel tempor postea constituto eu. Prompta veritus mei ut, eum tollit vivendo at. Eu simul melius est. Vis zril vocibus eu, laudem officiis iudicabit eam cu.",
+        "At per equidem lobortis imperdiet, ei his delectus omittantur. Mei ne ludus omnium integre, ne nec vitae menandri eleifend, pri nostrum mentitum invidunt an."
+      ],
+    },
+    {
+      "title" : "Hands of a Keyboard Crusher",
+      "image" : "",
+      "subTitle" : "",
+      "description" : [
+        "Lorem ipsum dolor sit amet, mucius legendos ut qui, vel tempor postea constituto eu. Prompta veritus mei ut, eum tollit vivendo at. Eu simul melius est. Vis zril vocibus eu, laudem officiis iudicabit eam cu.",
+        "At per equidem lobortis imperdiet, ei his delectus omittantur. Mei ne ludus omnium integre, ne nec vitae menandri eleifend, pri nostrum mentitum invidunt an."
+      ],
+      "projects" : [
+        {
+          "title" : "project 1",
+          "image" : "portfolio_gallery/about/ahi_notes_1",
+          "description" : "Veritus sapientem te pri, melius alienum instructior vis ea, appetere reprimique in cum. Cu pro quando sensibus, at duo viris omittantur. Ut causae neglegentur nam, qui id docendi patrioque. Latine repudiare instructior eu vix."
+        },
+        {
+          "title" : "project 2",
+          "image" : "portfolio_gallery/about/ahi_notes_2",
+          "description" : "At per equidem lobortis imperdiet, ei his delectus omittantur. Mei ne ludus omnium integre, ne nec vitae menandri eleifend, pri nostrum mentitum invidunt an. Per id odio eloquentiam. Vocent nostrud accusata eam et, te has ferri viris. Ad stet blandit mei, vis dolor viderer quaeque ei."
+        },
+        {
+          "title" : "project 3",
+          "image" : "portfolio_gallery/about/ahi_notes_2",
+          "description" : "At per equidem lobortis imperdiet, ei his delectus omittantur. Mei ne ludus omnium integre, ne nec vitae menandri eleifend, pri nostrum mentitum invidunt an. Per id odio eloquentiam. Vocent nostrud accusata eam et, te has ferri viris. Ad stet blandit mei, vis dolor viderer quaeque ei."
+        },
+        {
+          "title" : "project 4",
+          "image" : "portfolio_gallery/about/ahi_notes_2",
+          "description" : "At per equidem lobortis imperdiet, ei his delectus omittantur. Mei ne ludus omnium integre, ne nec vitae menandri eleifend, pri nostrum mentitum invidunt an. Per id odio eloquentiam. Vocent nostrud accusata eam et, te has ferri viris. Ad stet blandit mei, vis dolor viderer quaeque ei."
+        }
+      ],
+      "technologies" : [
+        {
+          "name" : "JavaScript",
+          "logo" : ""
+        },
+        {
+          "name" : "Ruby",
+          "logo" : ""
+        },
+        {
+          "name" : "Java",
+          "logo" : ""
+        },
+        {
+          "name" : "SalesForce",
+          "logo" : ""
+        },
+        {
+          "name" : "Craft",
+          "logo" : ""
+        },
+        {
+          "name" : "jQuery",
+          "logo" : ""
+        },
+        {
+          "name" : "AngularJs",
+          "logo" : ""
+        },
+        {
+          "name" : "Rails",
+          "logo" : ""
+        },
+      ]
+    },
+  ],
+
+  "title" : "this is the title",
+  "mainImg" : "portfolio_gallery/about/Portrait_of_Gutenberg",
+  "images" : [],
+  "header" : "this is a header",
+  "description" : [
+    "Lorem ipsum dolor sit amet, mucius legendos ut qui, vel tempor postea constituto eu. Prompta veritus mei ut, eum tollit vivendo at. Eu simul melius est. Vis zril vocibus eu, laudem officiis iudicabit eam cu.",
+    "At per equidem lobortis imperdiet, ei his delectus omittantur. Mei ne ludus omnium integre, ne nec vitae menandri eleifend, pri nostrum mentitum invidunt an."
+  ],
+  "projects" : [
+    {
+      "title" : "project 1",
+      "image" : "portfolio_gallery/about/ahi_notes_1",
+      "description" : "Veritus sapientem te pri, melius alienum instructior vis ea, appetere reprimique in cum. Cu pro quando sensibus, at duo viris omittantur. Ut causae neglegentur nam, qui id docendi patrioque. Latine repudiare instructior eu vix."
+    },
+    {
+      "title" : "project 2",
+      "image" : "portfolio_gallery/about/ahi_notes_2",
+      "description" : "At per equidem lobortis imperdiet, ei his delectus omittantur. Mei ne ludus omnium integre, ne nec vitae menandri eleifend, pri nostrum mentitum invidunt an. Per id odio eloquentiam. Vocent nostrud accusata eam et, te has ferri viris. Ad stet blandit mei, vis dolor viderer quaeque ei."
+    }
+  ],
+  "contactInfo" : [
+    "isaac.woodruff@gmail.com",
+    "github.com",
+    "linkedin.com"
+  ]
+}
