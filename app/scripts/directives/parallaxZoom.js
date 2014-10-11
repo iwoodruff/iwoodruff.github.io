@@ -113,21 +113,20 @@ portfolioApp.directive('parallaxZoom', ['$timeout', '$q', function ($timeout, $q
           widthLrg = parseInt(imgLrg.css('width'));
 
 
-          var containerWidth = parseInt(imgContainer.css('width'));
-
-          offsetX = parseInt(imgContainer.offset().left);
+          offsetX = parseInt(imgLrg.offset().left);
+          var targetWidth = parseInt(imgLrg.css('width'));
 
 
         } else { // is shoe
           heightLrg = parseInt(imgLrg.css('height'));
 
-          var containerWidth = parseInt(imgContainer.css('width'));
+          var targetWidth = parseInt(imgContainer.css('width'));
 
           widthLrg = parseInt(imgLrg.css('width'));
           heightZoom = heightLrg * 1.4;
 
           imgContainer.css({
-            'height' : heightLrg * 0.8 // clips height so shoe can vertically parallax
+            'height' : heightLrg * 0.85 // clips height so shoe can vertically parallax
           });
 
           imgZoom.css({
@@ -148,10 +147,10 @@ portfolioApp.directive('parallaxZoom', ['$timeout', '$q', function ($timeout, $q
             });
           });
 
-          var diffWidth = containerWidth - widthLrg;
+          var diffWidth = targetWidth - widthLrg;
 
           imgLrg.bind('mousemove', function (event) {
-            var percentageMoused = parseInt(event.pageX) / containerWidth;
+            var percentageMoused = parseInt(event.pageX) / targetWidth;
 
             var x = percentageMoused * diffWidth;
 
@@ -183,7 +182,7 @@ portfolioApp.directive('parallaxZoom', ['$timeout', '$q', function ($timeout, $q
                 relativeX = e.pageX - offsetX;
                 relativeY = e.pageY - offsetY;
 
-                percentageX = relativeX / containerWidth;
+                percentageX = relativeX / targetWidth;
                 percentageY = relativeY / heightLrg;
 
                 console.log(percentageX)
