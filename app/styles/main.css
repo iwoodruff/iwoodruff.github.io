@@ -4385,7 +4385,22 @@ section #artist #gallery-carousel .gallery-image .img-container .img-zoom {
 section #artist #gallery-carousel .gallery-image .img-container .img-zoom.img-wide {
   top: 50%;
 }
+section #nerd .rotators {
+  position: relative;
+  z-index: 1100;
+}
+section #nerd .rotators img {
+  width: 350px;
+  position: absolute;
+  left: 50%;
+  margin-left: -175px;
+  pointer-events: none;
+  -webkit-transition: visibility 0.5s;
+  -o-transition: visibility 0.5s;
+  transition: visibility 0.5s;
+}
 section #nerd #shoe-container .img-container {
+  position: relative;
   overflow: hidden;
 }
 section #nerd #shoe-container .img-container .img-lrg {

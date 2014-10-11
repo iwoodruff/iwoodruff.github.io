@@ -380,8 +380,24 @@ section {
   }
 
   #nerd {
+    .rotators {
+      position: relative;
+      z-index: 1100;
+
+      img {
+        width: 350px;
+        position: absolute;
+        left: 50%;
+        margin-left: -175px;
+        pointer-events: none;
+
+        .transition(visibility 0.5s)
+      }
+    }
+
     #shoe-container {
       .img-container {
+        position: relative;
         overflow: hidden;
 
         .img-lrg {

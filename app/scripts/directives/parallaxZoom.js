@@ -120,13 +120,11 @@ portfolioApp.directive('parallaxZoom', ['$timeout', '$q', function ($timeout, $q
         } else { // is shoe
           heightLrg = parseInt(imgLrg.css('height'));
 
-          var targetWidth = parseInt(imgContainer.css('width'));
-
           widthLrg = parseInt(imgLrg.css('width'));
           heightZoom = heightLrg * 1.4;
 
           imgContainer.css({
-            'height' : heightLrg * 0.85 // clips height so shoe can vertically parallax
+            'height' : heightLrg
           });
 
           imgZoom.css({
@@ -147,14 +145,36 @@ portfolioApp.directive('parallaxZoom', ['$timeout', '$q', function ($timeout, $q
             });
           });
 
+          var targetWidth = parseInt(imgContainer.css('width'));
+
           var diffWidth = targetWidth - widthLrg;
 
           imgLrg.bind('mousemove', function (event) {
             var percentageMoused = parseInt(event.pageX) / targetWidth;
 
+            var activeRotator;
+
+            if (percentageMoused > 0.06 && percentageMoused < 0.3) {
+              activeRotator = 1;
+            } else if (percentageMoused > 0.3 && percentageMoused < 0.43) {
+              activeRotator = 0;
+            } else if (percentageMoused > 0.43 && percentageMoused < 0.5) {
+              activeRotator = 7;
+            } else if (percentageMoused > 0.5 && percentageMoused < 0.56) {
+              activeRotator = 6;
+            } else if (percentageMoused > 0.56 && percentageMoused < 0.64) {
+              activeRotator = 5;
+            } else if (percentageMoused > 0.64 && percentageMoused < 0.8) {
+              activeRotator = 4;
+            } else if (percentageMoused > 0.8 && percentageMoused < 0.94) {
+              activeRotator = 3;
+            }
+
+            scope.$apply(scope.activeRotator = activeRotator);
+
             var x = percentageMoused * diffWidth;
 
-            imgLrg.css({
+            angular.element('.img-lrg').css({
               'webkitTransform' : 'translate3D(' + x + 'px, 0px, 0px)'
             });
           });
