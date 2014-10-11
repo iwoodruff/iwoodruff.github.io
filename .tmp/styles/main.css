@@ -4176,20 +4176,27 @@ section #artist #gallery-carousel .gallery-image .img-container .img-zoom {
 section #artist #gallery-carousel .gallery-image .img-container .img-zoom.img-wide {
   top: 50%;
 }
-section #nerd #shoe-container .img-lrg img {
+section #nerd #shoe-container .img-container {
+  overflow: hidden;
+}
+section #nerd #shoe-container .img-container .img-lrg {
+  position: relative;
+  width: 130%;
+}
+section #nerd #shoe-container .img-container .img-lrg img {
   width: 100%;
 }
-section #nerd #shoe-container .parallax-window {
+section #nerd #shoe-container .img-container .parallax-window {
   z-index: 1000;
   overflow: hidden;
   width: 100%;
   display: block;
   position: relative !important;
 }
-section #nerd #shoe-container .hover-grid-grid {
+section #nerd #shoe-container .img-container .hover-grid-grid {
   display: block;
 }
-section #nerd #shoe-container .hover-grid-box {
+section #nerd #shoe-container .img-container .hover-grid-box {
   width: 1.3%;
   position: absolute;
   border-right: 1px solid cyan;

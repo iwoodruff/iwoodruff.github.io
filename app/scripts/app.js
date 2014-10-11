@@ -7,7 +7,8 @@ var portfolioApp = angular
     'ngCookies',
     'ngSanitize',
     'ngAnimate',
-    'mgcrea.ngStrap'
+    'mgcrea.ngStrap',
+    'angular-carousel'
   ]);
 
 portfolioApp.config( function ($routeProvider, $logProvider) {

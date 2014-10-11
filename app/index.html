@@ -10,7 +10,7 @@
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="bower_components/angular-motion/dist/angular-motion.min.css" />
-    <link rel="stylesheet" href="bower_components/animate.css/animate.css" />
+    <link rel="stylesheet" href="bower_components/angular-carousel/dist/angular-carousel.min.css">
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -23,11 +23,11 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <header>
+<!--     <header>
       <concentric></concentric>
-    </header>
+    </header> -->
 
-    <section id="work-in-progress" ng-class="{ 'active' : comingSoon }">
+<!--     <section id="work-in-progress" ng-class="{ 'active' : comingSoon }">
       <a href="http://roughwoods.herokuapp.com/"><h2 ng-mouseenter="shimmer();" ng-mouseleave="cancelShimmer();" target="_blank">Com<br/>Ing<br/>Soon</h2></a>
       <ul class="list-inline">
         <li>
@@ -37,16 +37,16 @@
           <a href="www.linkedin.com/in/iwoodruff" ng-mouseenter="shimmer();" ng-mouseleave="cancelShimmer();" target="_blank"><img src="images/linkedin.png"></a>
         </li>
       </ul>
-    </section>
+    </section> -->
 
-    <!-- <section id="body-content" ng-view></section> -->
+    <section id="body-content" style="margin-top: 0px;" ng-view></section>
 
-<!--     <footer>
+    <footer>
       <div id="contact">
         <a href=""><h2>Con-<br>tact</h2></a>
       </div>
     </footer>
-     -->
+    
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
@@ -81,10 +81,8 @@
     <script src="bower_components/angular-strap/dist/angular-strap.tpl.js"></script>
     <!-- endbower -->
     <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/angular-carousel/dist/angular-carousel.js"></script>
     <!-- endbuild -->
-
-<!--     //     <script src="bower_components/angular-touch/angular-touch.js"></script>
-    // <script src="bower_components/angular-carousel/dist/angular-carousel.js"></script> -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>

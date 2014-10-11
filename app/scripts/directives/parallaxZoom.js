@@ -111,19 +111,30 @@ portfolioApp.directive('parallaxZoom', ['$timeout', '$q', function ($timeout, $q
 
           heightLrg = parseInt(imgLrg.css('height'));
           widthLrg = parseInt(imgLrg.css('width'));
+
+
+          var containerWidth = parseInt(imgContainer.css('width'));
+
+          offsetX = parseInt(imgContainer.offset().left);
+
+
         } else { // is shoe
           heightLrg = parseInt(imgLrg.css('height'));
 
-          widthLrg = parseInt(browserWindow.innerWidth());
+          var containerWidth = parseInt(imgContainer.css('width'));
+
+          widthLrg = parseInt(imgLrg.css('width'));
           heightZoom = heightLrg * 1.4;
 
           imgContainer.css({
-            'height' : heightLrg
+            'height' : heightLrg * 0.8 // clips height so shoe can vertically parallax
           });
 
           imgZoom.css({
             'height' : heightZoom
           });
+
+          offsetX = parseInt(imgLrg.offset().left)
 
           browserWindow.bind('resize', function () {
             heightLrg = parseInt(imgLrg.css('height'));
@@ -134,6 +145,18 @@ portfolioApp.directive('parallaxZoom', ['$timeout', '$q', function ($timeout, $q
 
             imgZoom.css({
               'height' : heightZoom
+            });
+          });
+
+          var diffWidth = containerWidth - widthLrg;
+
+          imgLrg.bind('mousemove', function (event) {
+            var percentageMoused = parseInt(event.pageX) / containerWidth;
+
+            var x = percentageMoused * diffWidth;
+
+            imgLrg.css({
+              'webkitTransform' : 'translate3D(' + x + 'px, 0px, 0px)'
             });
           });
         }
@@ -148,21 +171,22 @@ portfolioApp.directive('parallaxZoom', ['$timeout', '$q', function ($timeout, $q
 
           // sets defaults 
           widthZoom = parseInt(imgZoom.css('width'));
-          diffImgWidth = widthLrg - widthZoom;
+          diffImgWidth = parseInt(imgLrg.css('width')) - widthZoom;
           diffImgHeight = heightLrg - heightZoom;
 
           scope.parallaxZoom = function (bind) {
             if (bind) {
               imgLrg.bind('mousemove', function (e) {
                 offset = offset || imgLrg.offset();
-                offsetX = offsetX || parseInt(offset.left);
                 offsetY = offsetY || parseInt(offset.top);
 
                 relativeX = e.pageX - offsetX;
                 relativeY = e.pageY - offsetY;
 
-                percentageX = relativeX / widthLrg;
+                percentageX = relativeX / containerWidth;
                 percentageY = relativeY / heightLrg;
+
+                console.log(percentageX)
 
                 zoomX = -1 * percentageX * widthZoomView;
                 zoomY = -1 * percentageY * heightZoomView;
@@ -178,42 +202,6 @@ portfolioApp.directive('parallaxZoom', ['$timeout', '$q', function ($timeout, $q
                   'webkitTransform' : 'translate3D(' + imgX + 'px, ' + imgY + 'px, 0px)'
                 });
               });
-
-              // imgLrg.bind('mousemove', function () {
-              //   // offsets are defined at the beginning of every zoom
-              //   offset = offset || imgLrg.offset();
-              //   offsetX = offsetX || parseInt(offset.left);
-              //   offsetY = offsetY || parseInt(offset.top);
-
-              //   // relative position of mouse within the image
-              //   relativeX = event.pageX - offsetX;
-              //   relativeY = event.pageY - offsetY;
-
-              //   // relative position of zoom window's top left corner within the image
-              //   zoomOffset = zoomView.offset();
-              //   relativeZoomX = event.pageX - zoomOffset.left;
-              //   relativeZoomY = event.pageY - zoomOffset.top;
-
-              //   // relative position of mouse within zoom view * difference in width btwn zoomview and imgZoom
-              //   imgX = ((relativeZoomX / zoomViewWidth) * (zoomViewWidth - widthZoom));
-              //   imgY = ((relativeZoomY / zoomViewHeight) * (zoomViewHeight - heightZoom));
-
-              //   imgZoom.css({
-              //     'webkitTransform' : 'translate3D(' + imgX + 'px, ' + imgY + 'px, 0px)'
-              //   });
-
-              //   // math for parallaxing the zoom view
-              //   zoomViewX = -1 * ((relativeX / widthLrg) * zoomViewWidth);
-              //   zoomViewY = -1 * ((relativeY / heightLrg) * zoomViewHeight);
-
-              //   // relative position of mouse +/- position of parallaxed zoomView
-              //   zoomX = relativeX + (zoomViewX)
-              //   zoomY = relativeY + (zoomViewY)
-
-              //   zoomView.css({
-              //     'webkitTransform' : 'translate3D(' + Math.round(zoomX) + 'px, ' + Math.round(zoomY) + 'px, 0px)'
-              //   });
-              // });
             } else {
               imgLrg.unbind('mousemove');
               offset = undefined;
