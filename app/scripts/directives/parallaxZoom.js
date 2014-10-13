@@ -112,15 +112,17 @@ portfolioApp.directive('parallaxZoom', ['$timeout', '$q', function ($timeout, $q
           heightLrg = parseInt(imgLrg.css('height'));
           widthLrg = parseInt(imgLrg.css('width'));
 
-
-          offsetX = parseInt(imgLrg.offset().left);
-          var targetWidth = parseInt(imgLrg.css('width'));
+          var target = imgLrg;
+          offsetX = parseInt(target.offset().left);
+          var targetWidth = parseInt(target.css('width'));
 
 
         } else { // is shoe
-          heightLrg = parseInt(imgLrg.css('height'));
+          target = imgContainer;
 
-          widthLrg = parseInt(imgLrg.css('width'));
+          heightLrg = parseInt(target.css('height'));
+
+          widthLrg = parseInt(target.css('width'));
           heightZoom = heightLrg * 1.4;
 
           imgContainer.css({
@@ -131,10 +133,10 @@ portfolioApp.directive('parallaxZoom', ['$timeout', '$q', function ($timeout, $q
             'height' : heightZoom
           });
 
-          offsetX = parseInt(imgLrg.offset().left)
+          offsetX = parseInt(target.offset().left)
 
           browserWindow.bind('resize', function () {
-            heightLrg = parseInt(imgLrg.css('height'));
+            heightLrg = parseInt(target.css('height'));
 
             imgContainer.css({
               'height' : heightLrg
@@ -146,10 +148,9 @@ portfolioApp.directive('parallaxZoom', ['$timeout', '$q', function ($timeout, $q
           });
 
           var targetWidth = parseInt(imgContainer.css('width'));
-
           var diffWidth = targetWidth - widthLrg;
 
-          imgLrg.bind('mousemove', function (event) {
+          target.bind('mousemove', function (event) {
             var percentageMoused = parseInt(event.pageX) / targetWidth;
 
             var activeRotator;
@@ -195,7 +196,7 @@ portfolioApp.directive('parallaxZoom', ['$timeout', '$q', function ($timeout, $q
 
           scope.parallaxZoom = function (bind) {
             if (bind) {
-              imgLrg.bind('mousemove', function (e) {
+              target.bind('mousemove', function (e) {
                 offset = offset || imgLrg.offset();
                 offsetY = offsetY || parseInt(offset.top);
 
@@ -245,19 +246,19 @@ portfolioApp.directive('parallaxZoom', ['$timeout', '$q', function ($timeout, $q
 
       $scope.showZoom = false
 
-      $scope.toggleZoom = function () {
-        if ($scope.zoomLoaded) { // binds and unbinds mousemove event depending on its current status.
-          $scope.showZoom = !$scope.showZoom;
-          $scope.parallaxZoom($scope.showZoom);
-        } else { // wait until zoomImg is loaded, then toggle zoom window.
-          $scope.$watch('zoomLoaded', function (newVal, oldVal) {
-            if (newVal !== oldVal && newVal === true) {
-              $scope.showZoom = !$scope.showZoom;
-              $scope.parallaxZoom($scope.showZoom);
-            }
-          });
-        }
-      };
+      // $scope.toggleZoom = function () {
+      //   if ($scope.zoomLoaded) { // binds and unbinds mousemove event depending on its current status.
+      //     $scope.showZoom = !$scope.showZoom;
+      //     $scope.parallaxZoom($scope.showZoom);
+      //   } else { // wait until zoomImg is loaded, then toggle zoom window.
+      //     $scope.$watch('zoomLoaded', function (newVal, oldVal) {
+      //       if (newVal !== oldVal && newVal === true) {
+      //         $scope.showZoom = !$scope.showZoom;
+      //         $scope.parallaxZoom($scope.showZoom);
+      //       }
+      //     });
+      //   }
+      // };
     }
   };
 }]);

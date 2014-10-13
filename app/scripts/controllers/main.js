@@ -9,6 +9,10 @@ angular.module('portfolioApp')
       ctrl.gallery = data;
     });
 
+    GetJson.getGrid().then( function (data) {
+      ctrl.gridCaptions = data;
+    })
+
     ctrl.rotators = [
       'portfolio_gallery/shoe/shoe1.png',
       'portfolio_gallery/shoe/shoe2.png',
@@ -24,17 +28,17 @@ angular.module('portfolioApp')
         j = 0
 
 
-    for (var x = 0; x < 77; x++) {
-      gridCaptions[x] = [];
-      for (var y = 0; y < 22; y++) {
-        gridCaptions[x][y] = { "description" : ""};
-        gridCaptions[x][y].id = j;
-        gridCaptions[x][y].row = y;
-        gridCaptions[x][y].column = x;
+    // for (var x = 0; x < 77; x++) {
+    //   gridCaptions[x] = [];
+    //   for (var y = 0; y < 31; y++) {
+    //     gridCaptions[x][y] = { "description" : "" };
+    //     gridCaptions[x][y].id = j;
+    //     gridCaptions[x][y].row = y;
+    //     gridCaptions[x][y].column = x;
 
-        j++
-      }
-    }
+    //     j++
+    //   }
+    // }
 
     ctrl.activeBox = {};
 
@@ -47,7 +51,7 @@ angular.module('portfolioApp')
       ctrl.activeBox = box;
     };
 
-    ctrl.gridCaptions = gridCaptions;
+    // ctrl.gridCaptions = gridCaptions;
 
     ctrl.exportDescriptions = function () {
       var data = JSON.stringify(ctrl.gridCaptions);

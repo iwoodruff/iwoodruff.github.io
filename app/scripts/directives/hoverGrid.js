@@ -35,7 +35,13 @@ portfolioApp.directive('hoverGrid', ['$compile', function ($compile) {
           });
 
           widthToHeight = targetWidth / targetHeight;
+
+          console.log(widthToHeight)
+
+
           totalY = Math.ceil(totalX / widthToHeight)
+
+          console.log(totalY)
 
           scope.boxWidth = targetWidth / totalX;
           scope.boxHeight = targetHeight / totalY;

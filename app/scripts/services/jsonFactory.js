@@ -13,10 +13,10 @@ portfolioApp.factory('GetJson', function ($http, $q) {
       return defer.promise;
     },
 
-    getAbout : function () {
+    getGrid : function () {
       var defer = $q.defer();
 
-      $http({ method : 'GET', url : '/data/about.json' }).
+      $http({ method : 'GET', url : '/data/grid.json' }).
         success( function (data) {
           defer.resolve(data);
         });
