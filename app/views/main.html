@@ -54,18 +54,22 @@
  -->
 
 <article about-section id="nerd" about-section-transition-target="#shoe-container">
-  <div class="grid-input">
+<!--   <div class="grid-input">
     <h4 class="grid-description">{{ Main.activeBox.description }}</h4>
     <input ng-model="Main.activeBox.description" class="form-control" id="description-input" />
     <a href class="btn btn-lg btn-primary" ng-click="Main.exportDescriptions()">export</a>
   </div>
-
+ -->
   <div class="rotators">
     <img ng-src="http://res.cloudinary.com/digbk5qam/image/upload/v1/{{ rotatorUrl }}" ng-repeat="rotatorUrl in Main.rotators track by $index" ng-show="activeRotator == $index" />
   </div>
   <div id="shoe-container">
     <parallax-zoom parallax-zoom-options="{ default : 'portfolio_gallery/shoe/web_shoe_lrg', zoom : 'portfolio_gallery/shoe/web_shoe_zoom', fullWidth : true, hoverGrid : true }"></parallax-zoom>
   </div>
+
+  <article class="grid-caption">
+    <h4 class="text-center">{{ Main.activeBox.description }}</h4>
+  </article>
 
   <div class="container">
     <div class="row">

@@ -58,6 +58,8 @@ portfolioApp.directive('parallaxZoom', ['$timeout', '$q', function ($timeout, $q
           scope.lrgLoaded = true;
         });
 
+        var shoe = false;
+
         if (!options.fullWidth) { // is gallery img
           // if img is landscape, center vertically with .img-wide
           if (parseInt(imgLrg.css('height')) < heightMinusNav) {
@@ -116,22 +118,21 @@ portfolioApp.directive('parallaxZoom', ['$timeout', '$q', function ($timeout, $q
           offsetX = parseInt(target.offset().left);
           var targetWidth = parseInt(target.css('width'));
 
-
         } else { // is shoe
-          target = imgContainer;
+          heightLrg = parseInt(imgLrg.css('height'));
 
-          heightLrg = parseInt(target.css('height'));
-
-          widthLrg = parseInt(target.css('width'));
+          widthLrg = parseInt(imgLrg.css('width'));
           heightZoom = heightLrg * 1.4;
 
           imgContainer.css({
-            'height' : heightLrg
+            'height' : heightLrg * 0.85
           });
 
           imgZoom.css({
             'height' : heightZoom
           });
+
+          target = imgContainer;
 
           offsetX = parseInt(target.offset().left)
 
@@ -150,35 +151,39 @@ portfolioApp.directive('parallaxZoom', ['$timeout', '$q', function ($timeout, $q
           var targetWidth = parseInt(imgContainer.css('width'));
           var diffWidth = targetWidth - widthLrg;
 
-          target.bind('mousemove', function (event) {
-            var percentageMoused = parseInt(event.pageX) / targetWidth;
 
-            var activeRotator;
+          shoe = true;
 
-            if (percentageMoused > 0.06 && percentageMoused < 0.3) {
-              activeRotator = 1;
-            } else if (percentageMoused > 0.3 && percentageMoused < 0.43) {
-              activeRotator = 0;
-            } else if (percentageMoused > 0.43 && percentageMoused < 0.5) {
-              activeRotator = 7;
-            } else if (percentageMoused > 0.5 && percentageMoused < 0.56) {
-              activeRotator = 6;
-            } else if (percentageMoused > 0.56 && percentageMoused < 0.64) {
-              activeRotator = 5;
-            } else if (percentageMoused > 0.64 && percentageMoused < 0.8) {
-              activeRotator = 4;
-            } else if (percentageMoused > 0.8 && percentageMoused < 0.94) {
-              activeRotator = 3;
-            }
 
-            scope.$apply(scope.activeRotator = activeRotator);
+          // target.bind('mousemove', function (event) {
+          //   var percentageMoused = parseInt(event.pageX) / targetWidth;
 
-            var x = percentageMoused * diffWidth;
+          //   var activeRotator;
 
-            angular.element('.img-lrg').css({
-              'webkitTransform' : 'translate3D(' + x + 'px, 0px, 0px)'
-            });
-          });
+          //   if (percentageMoused > 0.06 && percentageMoused < 0.3) {
+          //     activeRotator = 1;
+          //   } else if (percentageMoused > 0.3 && percentageMoused < 0.43) {
+          //     activeRotator = 0;
+          //   } else if (percentageMoused > 0.43 && percentageMoused < 0.5) {
+          //     activeRotator = 7;
+          //   } else if (percentageMoused > 0.5 && percentageMoused < 0.56) {
+          //     activeRotator = 6;
+          //   } else if (percentageMoused > 0.56 && percentageMoused < 0.64) {
+          //     activeRotator = 5;
+          //   } else if (percentageMoused > 0.64 && percentageMoused < 0.8) {
+          //     activeRotator = 4;
+          //   } else if (percentageMoused > 0.8 && percentageMoused < 0.94) {
+          //     activeRotator = 3;
+          //   }
+
+          //   scope.$apply(scope.activeRotator = activeRotator);
+
+          //   var x = percentageMoused * diffWidth;
+
+          //   angular.element('.img-lrg').css({
+          //     'webkitTransform' : 'translate3D(' + x + 'px, 0px, 0px)'
+          //   });
+          // });
         }
 
         // ======================================
@@ -194,9 +199,42 @@ portfolioApp.directive('parallaxZoom', ['$timeout', '$q', function ($timeout, $q
           diffImgWidth = parseInt(imgLrg.css('width')) - widthZoom;
           diffImgHeight = heightLrg - heightZoom;
 
-          scope.parallaxZoom = function (bind) {
-            if (bind) {
-              target.bind('mousemove', function (e) {
+          // scope.parallaxZoom = function (bind) {
+          target.bind('mousemove', function (e) {
+            if (!!shoe) {
+              var percentageMoused = parseInt(event.pageX) / targetWidth;
+
+              var activeRotator;
+
+              if (percentageMoused > 0.06 && percentageMoused < 0.3) {
+                activeRotator = 1;
+              } else if (percentageMoused > 0.3 && percentageMoused < 0.43) {
+                activeRotator = 0;
+              } else if (percentageMoused > 0.43 && percentageMoused < 0.5) {
+                activeRotator = 7;
+              } else if (percentageMoused > 0.5 && percentageMoused < 0.56) {
+                activeRotator = 6;
+              } else if (percentageMoused > 0.56 && percentageMoused < 0.64) {
+                activeRotator = 5;
+              } else if (percentageMoused > 0.64 && percentageMoused < 0.8) {
+                activeRotator = 4;
+              } else if (percentageMoused > 0.8 && percentageMoused < 0.94) {
+                activeRotator = 3;
+              }
+
+              scope.$apply(scope.activeRotator = activeRotator);
+
+              var x = percentageMoused * diffWidth;
+
+              angular.element('.img-lrg').css({
+                'webkitTransform' : 'translate3D(' + x + 'px, 0px, 0px)'
+              });
+            }
+
+            scope.parallaxZoom = function (bind) {
+              if (bind) {
+                console.log('hi')
+
                 offset = offset || imgLrg.offset();
                 offsetY = offsetY || parseInt(offset.top);
 
@@ -205,8 +243,6 @@ portfolioApp.directive('parallaxZoom', ['$timeout', '$q', function ($timeout, $q
 
                 percentageX = relativeX / targetWidth;
                 percentageY = relativeY / heightLrg;
-
-                console.log(percentageX)
 
                 zoomX = -1 * percentageX * widthZoomView;
                 zoomY = -1 * percentageY * heightZoomView;
@@ -221,14 +257,14 @@ portfolioApp.directive('parallaxZoom', ['$timeout', '$q', function ($timeout, $q
                 imgZoom.css({
                   'webkitTransform' : 'translate3D(' + imgX + 'px, ' + imgY + 'px, 0px)'
                 });
-              });
-            } else {
-              imgLrg.unbind('mousemove');
-              offset = undefined;
-              offsetX = undefined;
-              offsetY = undefined;
-            }
-          };
+              } else {
+                imgLrg.unbind('mousemove');
+                offset = undefined;
+                offsetX = undefined;
+                offsetY = undefined;
+              }
+            };
+          });
         });
       });
     },
@@ -246,19 +282,21 @@ portfolioApp.directive('parallaxZoom', ['$timeout', '$q', function ($timeout, $q
 
       $scope.showZoom = false
 
-      // $scope.toggleZoom = function () {
-      //   if ($scope.zoomLoaded) { // binds and unbinds mousemove event depending on its current status.
-      //     $scope.showZoom = !$scope.showZoom;
-      //     $scope.parallaxZoom($scope.showZoom);
-      //   } else { // wait until zoomImg is loaded, then toggle zoom window.
-      //     $scope.$watch('zoomLoaded', function (newVal, oldVal) {
-      //       if (newVal !== oldVal && newVal === true) {
-      //         $scope.showZoom = !$scope.showZoom;
-      //         $scope.parallaxZoom($scope.showZoom);
-      //       }
-      //     });
-      //   }
-      // };
+      $scope.toggleZoom = function () {
+        console.log('hey')
+
+        if ($scope.zoomLoaded) { // binds and unbinds mousemove event depending on its current status.
+          $scope.showZoom = !$scope.showZoom;
+          $scope.parallaxZoom($scope.showZoom);
+        } else { // wait until zoomImg is loaded, then toggle zoom window.
+          $scope.$watch('zoomLoaded', function (newVal, oldVal) {
+            if (newVal !== oldVal && newVal === true) {
+              $scope.showZoom = !$scope.showZoom;
+              $scope.parallaxZoom($scope.showZoom);
+            }
+          });
+        }
+      };
     }
   };
 }]);

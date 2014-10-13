@@ -4176,6 +4176,17 @@ section #artist #gallery-carousel .gallery-image .img-container .img-zoom {
 section #artist #gallery-carousel .gallery-image .img-container .img-zoom.img-wide {
   top: 50%;
 }
+section #nerd .grid-caption {
+  margin-top: -50px;
+  position: relative;
+}
+section #nerd .grid-caption h4 {
+  text-transform: uppercase;
+  font-weight: lighter;
+  letter-spacing: 1.5px;
+  color: white;
+  text-shadow: black 2px 2px 1px;
+}
 section #nerd .rotators {
   position: relative;
   z-index: 1100;
@@ -4227,14 +4238,22 @@ section #nerd #shoe-container .img-container .parallax-window {
 }
 section #nerd #shoe-container .img-container .hover-grid-grid {
   display: block;
+  position: absolute;
 }
 section #nerd #shoe-container .img-container .hover-grid-box {
   width: 1.45%;
   position: absolute;
+  overflow: hidden;
+  color: #eeeeee;
+  text-transform: uppercase;
+  font-weight: lighter;
+  opacity: 0;
 }
 section #nerd #shoe-container .img-container .hover-grid-box.show-grid {
+  opacity: 1;
   border: 1px solid cyan;
 }
-section #nerd #shoe-container .img-container .hover-grid-box.hide-grid {
-  border: 1px dotted orange;
+section #nerd #shoe-container .img-container .animate-enter {
+  opacity: 1;
+  transition: 500ms ease opacity;
 }

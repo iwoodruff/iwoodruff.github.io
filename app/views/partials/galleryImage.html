@@ -12,8 +12,10 @@
             ng-repeat="y in Main.gridCaptions[$index]"
             ng-model="y"
             style="height: {{ boxHeight }}px; top: {{ boxHeight * y.row }}px; left: {{ boxWidth * y.column }}px;" 
-            ng-click="Main.addDescription(y)" 
-            ng-class="{ 'hide-grid' : y.description }">{{ y.description }}</div>
+            ng-class="{ 'show-grid' : y.description && !y.toggled }" 
+            ng-bind="y.description"
+            ng-mouseenter="Main.activeBox = y; y.toggled = true;"
+            ng-click="toggleZoom()"></div>
       </div>
     </div>
   </div>
