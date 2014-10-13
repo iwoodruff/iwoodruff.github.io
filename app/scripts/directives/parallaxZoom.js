@@ -232,7 +232,7 @@ portfolioApp.directive('parallaxZoom', ['$timeout', '$q', function ($timeout, $q
             }
 
             scope.parallaxZoom = function (bind) {
-              if (bind) {
+              // if (bind) {
                 console.log('hi')
 
                 offset = offset || imgLrg.offset();
@@ -257,12 +257,12 @@ portfolioApp.directive('parallaxZoom', ['$timeout', '$q', function ($timeout, $q
                 imgZoom.css({
                   'webkitTransform' : 'translate3D(' + imgX + 'px, ' + imgY + 'px, 0px)'
                 });
-              } else {
-                imgLrg.unbind('mousemove');
-                offset = undefined;
-                offsetX = undefined;
-                offsetY = undefined;
-              }
+              // } else {
+              //   imgLrg.unbind('mousemove');
+              //   offset = undefined;
+              //   offsetX = undefined;
+              //   offsetY = undefined;
+              // }
             };
           });
         });
