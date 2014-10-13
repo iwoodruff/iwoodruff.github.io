@@ -231,7 +231,7 @@ portfolioApp.directive('parallaxZoom', ['$timeout', '$q', function ($timeout, $q
               });
             }
 
-            scope.parallaxZoom = function (bind) {
+            // scope.parallaxZoom = function (bind) {
               // if (bind) {
                 console.log('hi')
 
@@ -254,6 +254,7 @@ portfolioApp.directive('parallaxZoom', ['$timeout', '$q', function ($timeout, $q
                 imgX = percentageX * (widthZoomView - widthZoom);
                 imgY = percentageY * (heightZoomView - heightZoom); 
 
+
                 imgZoom.css({
                   'webkitTransform' : 'translate3D(' + imgX + 'px, ' + imgY + 'px, 0px)'
                 });
@@ -263,7 +264,7 @@ portfolioApp.directive('parallaxZoom', ['$timeout', '$q', function ($timeout, $q
               //   offsetX = undefined;
               //   offsetY = undefined;
               // }
-            };
+            // };
           });
         });
       });
