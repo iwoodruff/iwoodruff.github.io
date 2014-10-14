@@ -81,16 +81,17 @@ portfolioApp.directive('shoeZoom', ['$timeout', '$q', function ($timeout, $q) {
 
         diffContainerWidth = containerWidth - widthLrg;
 
-        imgZoom.bind('load', function () {
-          scope.$apply( function () {
-            scope.zoomLoaded = true;
-          });
+        // TODO: move all this jquery nonsense to the dom.
 
+        imgZoom.bind('load', function () {
           widthZoom = parseInt(imgZoom.css('width'));
           diffImgWidth = parseInt(imgLrg.css('width')) - widthZoom;
           diffImgHeight = containerHeight - heightZoom;
 
+
+          // moving this to the dom will more easily prevent knock-on event handler registration.
           imgContainer.bind('mousemove', function (e) {
+
             offset = offset || imgContainer.offset();
             offsetX = offsetX || offset.left;
             offsetY = offsetY || offset.top;
@@ -119,11 +120,13 @@ portfolioApp.directive('shoeZoom', ['$timeout', '$q', function ($timeout, $q) {
 
             scope.$apply(scope.activeRotator = activeRotator);
 
+
             parallaxX = percentageX * diffContainerWidth;
 
             containerLrg.css({
               'webkitTransform' : 'translate3D(' + parallaxX + 'px, 0px, 0px)'
             });
+
 
             zoomX = -1 * percentageX * widthZoomView;
             zoomY = -1 * percentageY * heightZoomView;
@@ -139,81 +142,58 @@ portfolioApp.directive('shoeZoom', ['$timeout', '$q', function ($timeout, $q) {
               'webkitTransform' : 'translate3D(' + imgX + 'px, ' + imgY + 'px, 0px)'
             });
           });
+
+          scope.$apply( function () {
+            scope.zoomLoaded = true;
+          });
         });
       });
     },
     controller : function ($scope, $element, $interval) {
-      $scope.showZoom = true;
-
       var gridCaptions,
-          activeBox
+          activeBox,
+          regenerateGrid,
+          regenerate,
+          x,
+          y
 
-      $scope.toggleZoom = function () {
-        $scope.showZoom = !$scope.showZoom;
-      };
-
-      $scope.activateBox = function (box) {
-        if (!!box.description) {
-          gridCaptions = gridCaptions || $scope.$parent.Main.gridCaptions;
-
-          box.toggled = true;
-
-          box.description = box.description.split('');
-
-          $scope.activebox = box
-
-          console.log($scope.activebox)
-
-          gridCaptions[box.column + 1][box.row + 1].toggled = true;
-          gridCaptions[box.column + 1][box.row - 1].toggled = true;
-          gridCaptions[box.column - 1][box.row - 1].toggled = true;
-          gridCaptions[box.column - 1][box.row + 1].toggled = true;
-          gridCaptions[box.column][box.row - 1].toggled = true;
-          gridCaptions[box.column][box.row + 1].toggled = true;
-          gridCaptions[box.column - 1][box.row].toggled = true;
-          gridCaptions[box.column + 1][box.row].toggled = true;
-        }
-      };
-
-
+      $scope.showZoom = false;
 
       $scope.regenerateGrid = function () {
-        console.log($scope.showZoom)
+        gridCaptions = $scope.$parent.Main.gridCaptions;
 
-        // $scope.showZoom = !$scope.shoeZoom;
+        regenerate = function (toggle) {
 
-        gridCaptions = gridCaptions || $scope.$parent.Main.gridCaptions;
-        console.log('hi');
+          x = 0,
+          y = 0;
 
-        var regenerateGrid
+          console.log(gridCaptions, x, gridCaptions[x].length)
 
-        var regenerate = function (toggle) {
-          var x = 0;
-          var y = 0;
+          var len = gridCaptions[x].length;
 
           regenerateGrid = $interval( function () {
-            for (y = 0; y < gridCaptions[x].length; y++) {
+            for (y = 0; y < len; y++) {
               gridCaptions[x][y].regenerate = toggle;
             }
 
             x++;
 
-            if (x == gridCaptions.length) {
+            if (x == gridCaptions.length) { // animation is finished
               $interval.cancel(regenerateGrid);
               regenerateGrid = undefined;
 
               if (!!toggle) {
                 regenerate(false);
-              }
+
+                $scope.showZoom = !$scope.showZoom;
+              } 
             }
           }, 3);
         };
 
-        if (!regenerateGrid) {
+        if (!regenerateGrid) { // grid is not animating, lock parallaxing & do not show zoom until animation is finished.
           regenerate(true);
         }
-
-
       };
     }
   }

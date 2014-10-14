@@ -20,7 +20,6 @@
   </div>
 
   <div class="caption-container" ng-class="{ 'show' : showZoom }">
-    <!-- <h4>{{ Main.activeBox.description }}</h4> -->
     <h4 ng-if="Main.activeBox.description">
       <span ng-repeat="letter in Main.activeBox.description track by $index" class="char_{{ letter.index }}">{{ letter.letter }}</span>
     </h4>

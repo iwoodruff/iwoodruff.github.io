@@ -5047,13 +5047,13 @@ section .img-zoom {
   visibility: hidden;
   border: 1px solid white;
   box-shadow: 0px 2px 10px 0px #000000;
+  overflow: hidden;
 }
 section .img-zoom.show {
   visibility: visible;
 }
 section .img-zoom img {
   position: absolute;
-  opacity: 0.6;
 }
 section #artist #gallery-carousel .gallery-image {
   position: relative;

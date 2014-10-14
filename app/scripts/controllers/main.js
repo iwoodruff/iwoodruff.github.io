@@ -19,38 +19,19 @@ angular.module('portfolioApp')
         i = 0,
         length
 
-    ctrl.computeLetterClass = function(index, activeBox) {
-      if (activeBox.description) {
-        console.log('hey', index, activeBox)
-
-        if (activeBox.description == activeDescription) {
-          i--
-
-          length = activeBox.description.split('').length;
-
-          return 'char_' + (index < (length / 2) ? i : index);
-        } else {
-          activeDescription = activeBox.description;
-          i = 0;
-          ctrl.computeLetterClass(index, activeBox);
-        }
-      }
-    };
-
     ctrl.activateBox = function (y) {
       if (y.description) {
         y.toggled = true;
 
-        var activeBox = y;
+        var activeBox = angular.copy(y);
 
-        var letters = y.description.split('');
+        var letters = typeof activeBox.description == 'string' ? activeBox.description.split('') : activeBox.description;
+
         var caption = [];
 
         if (letters.length > 25) {
           var z = -12
         }
-
-        console.log(letters.length)
         
         var lineBreak = ''
 
