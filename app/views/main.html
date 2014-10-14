@@ -1,4 +1,4 @@
-<article class="container" id="artist" about-section about-section-transition-target="#gallery-carousel">
+<!-- <article class="container" id="artist" about-section about-section-transition-target="#gallery-carousel">
   <div class="row">
     <div class="col-sm-7">
       <ul id="gallery-carousel" rn-carousel rn-carousel-indicator rn-carousel-buffered rn-carousel-index>
@@ -50,21 +50,15 @@
       </aside>
     </div>
   </div>
-</article>
+</article> -->
 
 
 <article about-section id="nerd" about-section-transition-target="#shoe-container">
-<!--   <div class="grid-input">
-    <h4 class="grid-description">{{ Main.activeBox.description }}</h4>
-    <input ng-model="Main.activeBox.description" class="form-control" id="description-input" />
-    <a href class="btn btn-lg btn-primary" ng-click="Main.exportDescriptions()">export</a>
-  </div>
- -->
   <div class="rotators">
     <img ng-src="http://res.cloudinary.com/digbk5qam/image/upload/v1/{{ rotatorUrl }}" ng-repeat="rotatorUrl in Main.rotators track by $index" ng-show="activeRotator == $index" />
   </div>
   <div id="shoe-container">
-    <parallax-zoom parallax-zoom-options="{ default : 'portfolio_gallery/shoe/web_shoe_lrg', zoom : 'portfolio_gallery/shoe/web_shoe_zoom', fullWidth : true, hoverGrid : true }"></parallax-zoom>
+    <shoe-zoom shoe-zoom-options="{ default : 'portfolio_gallery/shoe/web_shoe_lrg', zoom : 'portfolio_gallery/shoe/web_shoe_zoom', fullWidth : true, hoverGrid : true }"></shoe-zoom>
   </div>
 
   <article class="grid-caption">
