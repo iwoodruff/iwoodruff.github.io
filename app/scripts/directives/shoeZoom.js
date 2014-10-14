@@ -183,16 +183,20 @@ portfolioApp.directive('shoeZoom', ['$timeout', '$q', function ($timeout, $q) {
               regenerateGrid = undefined;
 
               if (!!toggle) {
+                console.log('recursing', toggle);
+
                 regenerate(false);
 
                 $scope.showZoom = !$scope.showZoom;
-              } 
+              }
             }
           }, 3);
         };
 
         if (!regenerateGrid) { // grid is not animating, lock parallaxing & do not show zoom until animation is finished.
           regenerate(true);
+        // } else {
+        //   $scope.showZoom = $scope.showZoom && !$scope.$showZoom;
         }
       };
     }

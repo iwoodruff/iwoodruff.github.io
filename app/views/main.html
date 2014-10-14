@@ -1,9 +1,9 @@
-<!-- <article class="container" id="artist" about-section about-section-transition-target="#gallery-carousel">
+<article class="container" id="artist" about-section about-section-transition-target="#gallery-carousel">
   <div class="row">
     <div class="col-sm-7">
       <ul id="gallery-carousel" rn-carousel rn-carousel-indicator rn-carousel-buffered rn-carousel-index>
         <li ng-repeat="image in Main.gallery.rows track by $index">
-          <div ng-if="carouselIndex == $index" ng-init="Main.updateIndex(carouselIndex)"></div>
+<!--           <div ng-if="carouselIndex == $index" ng-init="Main.updateIndex(carouselIndex)"></div> -->
           <parallax-zoom class="gallery-image" parallax-zoom-options="{ default : '{{ image.lrgUrl }}', zoom : '{{ image.zoomUrl }}', fullWidth : false }"></parallax-zoom>
         </li>
       </ul>
@@ -41,16 +41,16 @@
         </h6>
       </aside>
 
-      <aside ng-repeat="image in Main.gallery.rows track by $index" ng-if="Main.index == $index">
+<!--       <aside ng-repeat="image in Main.gallery.rows track by $index" ng-if="Main.index == $index">
         {{ Main.index }}{{ $index }}
         <h5>{{ image.title }}</h5>
         <h5>{{ image.dimensions }}</h5>
         <label>{{ image.descriptionHeader }}</label>
         <p ng-repeat="sentence in image.descriptionBody">{{ sentence }}</p>
-      </aside>
+      </aside> -->
     </div>
   </div>
-</article> -->
+</article>
 
 
 <article about-section id="nerd" about-section-transition-target="#shoe-container">
@@ -61,9 +61,9 @@
     <shoe-zoom shoe-zoom-options="{ default : 'portfolio_gallery/shoe/web_shoe_lrg', zoom : 'portfolio_gallery/shoe/web_shoe_zoom', fullWidth : true, hoverGrid : true }"></shoe-zoom>
   </div>
 
-<!--   <article class="grid-caption">
-    <h4 class="text-center">{{ Main.activeBox.description }}</h4>
-  </article> -->
+  <article class="grid-caption grounded" ng-if="!showZoom">
+    <h4><span ng-repeat="letter in Main.activeBox.description track by $index">{{ letter.letter }}</span></h4>
+  </article>
 
   <div class="container">
     <div class="row">

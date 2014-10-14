@@ -340,6 +340,7 @@ section {
     pointer-events: none;
     z-index: 900;
     visibility: hidden;
+    opacity: 0;
     border: 1px solid white;
     .box-shadow(0px 2px 10px 0px black);
 
@@ -347,8 +348,11 @@ section {
     overflow: hidden;
     // =================
 
+    .transition(opacity 400ms);
+
     &.show {
       visibility: visible;
+      opacity: 1;
     }
 
     img {
@@ -400,6 +404,11 @@ section {
     .grid-caption {
       margin-top: -50px;
       position: relative;
+      width: 500px;
+      left: 50%;
+      margin-left: -250px;
+      pointer-events: none;
+      text-align: center;
 
       h4 {
         text-transform: uppercase;
@@ -480,6 +489,8 @@ section {
           position: absolute;
           overflow: hidden;
           cursor: pointer;
+          border: 1px solid darken(@gray-lighter, 8%);
+          opacity: 0.6;
 
           .transition(border-color 200ms);
 
@@ -487,14 +498,18 @@ section {
             opacity: 0;
           }
 
+          &.hide-grid {
+            opacity: 0;
+          }
+
           &.show-grid {
             opacity: 1;
-            border: 1px solid @gray-lighter;
+            border: 1px solid darken(@gray-lighter, 8%);
 
             p {
               text-transform: uppercase;
               font-weight: lighter;
-              color: @gray-lighter;
+              color: darken(@gray-lighter, 5%);
               opacity: 1;
             }
           }
@@ -526,6 +541,7 @@ section {
             left: 48.5%;
             color: white;
             z-index: 999999;
+            opacity: 0;
 
             span {
               text-shadow: black 2px 2px 1px;
@@ -540,6 +556,12 @@ section {
 
           &.show {
             visibility: visible;
+
+            .transition(opacity 700);
+
+            h4 {
+              opacity: 1;
+            }
           }
 
           .img-zoom {
