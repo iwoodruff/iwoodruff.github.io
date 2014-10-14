@@ -16,3 +16,5 @@ craft/license.txt
 npm-debug.log
 
 *.codekit
+
+dist
