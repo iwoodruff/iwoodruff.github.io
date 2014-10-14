@@ -13,9 +13,8 @@
             ng-model="y"
             style="height: {{ boxHeight }}px; top: {{ boxHeight * y.row }}px; left: {{ boxWidth * y.column }}px;" 
             ng-class="{ 'show-grid' : (y.description && !y.toggled), 'regenerate' : y.regenerate && !y.toggled, 'regenerate-toggled' : y.toggled && y.regenerate }" 
-            ng-bind="y.description"
             ng-mouseenter="Main.activateBox(y);"
-            ng-click="regenerateGrid()">{{ y.description }}</div>
+            ng-click="regenerateGrid()"><p>{{ y.description }}</p></div>
       </div>
     </div>
   </div>

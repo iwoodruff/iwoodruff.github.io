@@ -48,16 +48,12 @@ angular.module('portfolioApp')
 
         if (letters.length > 25) {
           var z = -12
-        } else {
-        
         }
-
 
         console.log(letters.length)
         
         var lineBreak = ''
 
-        // var shiftLeft = -1 * Math.floor(letters.length / 2); // starts at middle, counts up (-10, -9, -8, etc.)
         var shiftRight = 0,
             shiftLeft
 

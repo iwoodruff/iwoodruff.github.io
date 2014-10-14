@@ -5656,13 +5656,13 @@ section .img-zoom {
   border: 1px solid white;
   -webkit-box-shadow: 0px 2px 10px 0px #000000;
   box-shadow: 0px 2px 10px 0px #000000;
-  overflow: hidden;
 }
 section .img-zoom.show {
   visibility: visible;
 }
 section .img-zoom img {
   position: absolute;
+  opacity: 0.6;
 }
 section #artist #gallery-carousel .gallery-image {
   position: relative;
@@ -5755,18 +5755,27 @@ section #nerd #shoe-container .img-container .hover-grid-box {
   width: 1.45%;
   position: absolute;
   overflow: hidden;
-  color: #eeeeee;
-  text-transform: uppercase;
-  font-weight: lighter;
-  opacity: 1;
+  cursor: pointer;
+  -webkit-transition: border-color 200ms;
+  -o-transition: border-color 200ms;
+  transition: border-color 200ms;
+}
+section #nerd #shoe-container .img-container .hover-grid-box p {
+  opacity: 0;
 }
 section #nerd #shoe-container .img-container .hover-grid-box.show-grid {
   opacity: 1;
-  border: 1px solid cyan;
+  border: 1px solid #eeeeee;
+}
+section #nerd #shoe-container .img-container .hover-grid-box.show-grid p {
+  text-transform: uppercase;
+  font-weight: lighter;
+  color: #eeeeee;
+  opacity: 1;
 }
 section #nerd #shoe-container .img-container .hover-grid-box.regenerate {
   opacity: 1;
-  border: 1px solid white;
+  border: 1px solid cyan;
 }
 section #nerd #shoe-container .img-container .hover-grid-box.regenerate-toggled {
   opacity: 1;
@@ -5780,6 +5789,8 @@ section #nerd #shoe-container .img-container .caption-container {
   border-radius: 300px;
   visibility: hidden;
   pointer-events: none;
+  margin-top: -50px;
+  margin-left: -50px;
 }
 section #nerd #shoe-container .img-container .caption-container h4 {
   position: absolute;
@@ -5788,6 +5799,7 @@ section #nerd #shoe-container .img-container .caption-container h4 {
   z-index: 999999;
 }
 section #nerd #shoe-container .img-container .caption-container h4 span {
+  text-shadow: black 2px 2px 1px;
   top: 23px;
   font-weight: lighter;
   position: absolute;
@@ -5801,8 +5813,4 @@ section #nerd #shoe-container .img-container .caption-container.show {
 section #nerd #shoe-container .img-container .caption-container .img-zoom {
   margin-top: 50px;
   margin-left: 50px;
-}
-section #nerd #shoe-container .img-container .caption-container .img-zoom img {
-  margin-top: -50px;
-  margin-left: -50px;
 }

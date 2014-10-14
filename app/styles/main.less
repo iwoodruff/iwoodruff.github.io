@@ -344,7 +344,7 @@ section {
     .box-shadow(0px 2px 10px 0px black);
 
     // =================
-    overflow: hidden;
+    // overflow: hidden;
     // =================
 
     &.show {
@@ -355,7 +355,7 @@ section {
       position: absolute;
 
       // =============
-      // opacity: 0.6;
+      opacity: 0.6;
       // =============
 
     }
@@ -479,19 +479,29 @@ section {
           width: 1.45%;
           position: absolute;
           overflow: hidden;
-          color: @gray-lighter;
-          text-transform: uppercase;
-          font-weight: lighter;
-          opacity: 1;
+          cursor: pointer;
+
+          .transition(border-color 200ms);
+
+          p {
+            opacity: 0;
+          }
 
           &.show-grid {
             opacity: 1;
-            border: 1px solid cyan;
+            border: 1px solid @gray-lighter;
+
+            p {
+              text-transform: uppercase;
+              font-weight: lighter;
+              color: @gray-lighter;
+              opacity: 1;
+            }
           }
 
           &.regenerate {
             opacity: 1;
-            border: 1px solid white;
+            border: 1px solid cyan;
           }
 
           &.regenerate-toggled {
@@ -508,6 +518,8 @@ section {
           border-radius: 300px;
           visibility: hidden;
           pointer-events: none;
+          margin-top: -50px;
+          margin-left: -50px;
 
           h4 {
             position: absolute;
@@ -516,6 +528,7 @@ section {
             z-index: 999999;
 
             span {
+              text-shadow: black 2px 2px 1px;
               top: 23px;
               font-weight: lighter;
               position: absolute;
@@ -532,11 +545,6 @@ section {
           .img-zoom {
             margin-top: 50px;
             margin-left: 50px;
-
-            img {
-              margin-top: -50px;
-              margin-left: -50px;
-            }
           }
         }
       }

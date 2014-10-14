@@ -133,7 +133,7 @@ portfolioApp.directive('shoeZoom', ['$timeout', '$q', function ($timeout, $q) {
             });
 
             imgX = percentageX * (widthZoomView - widthZoom);
-            imgY = percentageY * (heightZoomView - heightZoom);
+            imgY = percentageY * (300 - heightZoom);
 
             imgZoom.css({
               'webkitTransform' : 'translate3D(' + imgX + 'px, ' + imgY + 'px, 0px)'
@@ -204,8 +204,6 @@ portfolioApp.directive('shoeZoom', ['$timeout', '$q', function ($timeout, $q) {
 
               if (!!toggle) {
                 regenerate(false);
-              } else {
-                $scope.showZoom = !$scope.showZoom;
               }
             }
           }, 3);
