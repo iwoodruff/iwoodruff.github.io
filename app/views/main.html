@@ -1,4 +1,4 @@
-<!-- <article class="container" id="artist" about-section about-section-transition-target="#gallery-carousel">
+<article class="container" id="artist" about-section about-section-transition-target="#gallery-carousel">
   <div class="row">
     <div class="col-sm-7">
       <ul id="gallery-carousel" rn-carousel rn-carousel-indicator rn-carousel-buffered rn-carousel-index>
@@ -35,7 +35,7 @@
     </div>
   </div>
 </article>
- -->
+
 
 <article about-section id="nerd" about-section-transition-target="#shoe-container">
   <hgroup class="container">
@@ -43,10 +43,6 @@
   </hgroup>
 
   <div id="shoe-container">
-    <div class="rotators">
-      <img ng-src="http://res.cloudinary.com/digbk5qam/image/upload/v1/{{ rotatorUrl }}" ng-repeat="rotatorUrl in Main.rotators track by $index" ng-show="activeRotator == $index" />
-    </div>
-
     <shoe-zoom shoe-zoom-options="{ default : 'portfolio_gallery/shoe/web_shoe_lrg', zoom : 'portfolio_gallery/shoe/web_shoe_zoom', fullWidth : true, hoverGrid : true }"></shoe-zoom>
 
     <article class="grid-caption grounded" ng-if="!showZoom">
@@ -56,7 +52,7 @@
 
   <div class="container">
     <div class="row">
-      <div class="col-sm-8 col-sm-offset-2">
+      <div class="col-sm-5">
         <h6>
 
           <span class="caps">I</span>t is no secret that I'm a huge nerd,<br/>

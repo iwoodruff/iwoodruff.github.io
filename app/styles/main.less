@@ -345,7 +345,7 @@ section {
     .box-shadow(0px 2px 10px 0px black);
 
     // =================
-    // overflow: hidden;
+    overflow: hidden;
     // =================
 
     .transition(opacity 400ms);
@@ -359,7 +359,7 @@ section {
       position: absolute;
 
       // =============
-      opacity: 0.6;
+      // opacity: 0.6;
       // =============
 
     }
@@ -480,49 +480,49 @@ section {
           position: relative !important;
         }
 
-        .hover-grid-grid {
+        .grid-container {
           display: block;
           position: absolute;
-        }
 
-        .hover-grid-box {
-          width: 1.45%;
-          position: absolute;
-          overflow: hidden;
-          cursor: pointer;
-          border: 1px solid darken(@gray-lighter, 8%);
-          opacity: 0.6;
-
-          .transition(border-color 200ms);
-
-          p {
-            opacity: 0;
-          }
-
-          &.hide-grid {
-            opacity: 0;
-          }
-
-          &.show-grid {
-            opacity: 1;
+          .hover-grid-box {
+            width: 1.45%;
+            position: absolute;
+            overflow: hidden;
+            cursor: pointer;
             border: 1px solid darken(@gray-lighter, 8%);
+            opacity: 0.6;
+
+            .transition(border-color 200ms);
 
             p {
-              text-transform: uppercase;
-              font-weight: lighter;
-              color: darken(@gray-lighter, 5%);
-              opacity: 1;
+              opacity: 0;
             }
-          }
 
-          &.regenerate {
-            opacity: 1;
-            border: 1px solid cyan;
-          }
+            &.hide-grid {
+              opacity: 0;
+            }
 
-          &.regenerate-toggled {
-            opacity: 1;
-            border: 1px solid orange;
+            &.show-grid {
+              opacity: 1;
+              border: 1px solid darken(@gray-lighter, 8%);
+
+              p {
+                text-transform: uppercase;
+                font-weight: lighter;
+                color: darken(@gray-lighter, 5%);
+                opacity: 1;
+              }
+            }
+
+            &.regenerate {
+              opacity: 1;
+              border: 1px solid cyan;
+            }
+
+            &.regenerate-toggled {
+              opacity: 1;
+              border: 1px solid orange;
+            }
           }
         }
 
