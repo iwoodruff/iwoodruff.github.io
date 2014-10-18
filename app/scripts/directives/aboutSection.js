@@ -48,8 +48,6 @@ portfolioApp.directive('aboutSection', [function ($timeout) {
               'margin-top' : (parseInt(target.css('height')) * percentageScrolled)
             });
           }
-        } else {
-          if (element.hasClass('active')) { element.removeClass('active'); }
         }
       });
     }

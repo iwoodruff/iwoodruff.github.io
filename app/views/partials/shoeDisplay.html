@@ -1,9 +1,13 @@
-<div class="img-container" ng-click="regenerateGrid(true);">
-  <div class="img-lrg">
+<div class="img-container" ng-click="regenerateGrid(true);" ng-style="shoeZoom.imgContainer" ng-mousemove="shoeZoom.mousemove($event)">
+  <div class="rotators">
+    <img ng-src="http://res.cloudinary.com/digbk5qam/image/upload/v1/{{ rotatorUrl }}" ng-repeat="rotatorUrl in Main.rotators track by $index" ng-show="shoeZoom.activeRotator == $index" />
+  </div>
 
-    <img ng-src="http://res.cloudinary.com/digbk5qam/image/upload/v1/{{ imgDefault }}" ng-click="toggleZoom()" class="img-responsive hover-grid-target">
+  <div class="img-lrg" ng-style="shoeZoom.containerLrg">
 
-    <div class="hover-grid-grid" hover-grid hover-grid-options="{ target : '.hover-grid-target', totalBoxesX : 70 }" hover-grid-captions="Main.gridCaptions" hover-grid-add-description="Main.addDescription">
+    <img ng-src="http://res.cloudinary.com/digbk5qam/image/upload/v1/{{ imgDefault }}" ng-click="toggleZoom()" class="hover-grid-target">
+
+    <!-- <div class="hover-grid-grid" hover-grid hover-grid-options="{ target : '.hover-grid-target', totalBoxesX : 70 }" hover-grid-captions="Main.gridCaptions" hover-grid-add-description="Main.addDescription">
 
       <div ng-repeat="x in Main.gridCaptions track by $index">
 
@@ -16,15 +20,15 @@
             ng-mouseenter="Main.activateBox(y);"
             ng-click="regenerateGrid()"><p>{{ y.description }}</p></div>
       </div>
-    </div>
+    </div> -->
   </div>
 
-  <div class="caption-container" ng-class="{ 'show' : showZoom }">
+  <div class="caption-container" ng-class="{ 'show' : showZoom }" ng-style="shoeZoom.captionContainer">
     <h4 ng-if="Main.activeBox.description">
       <span ng-repeat="letter in Main.activeBox.description track by $index" class="char_{{ letter.index }}">{{ letter.letter }}</span>
     </h4>
     <div class="img-zoom" ng-class="{ 'show' : showZoom }">
-      <img ng-src="http://res.cloudinary.com/digbk5qam/image/upload/v1/{{ imgZoom }}">
+      <img ng-src="http://res.cloudinary.com/digbk5qam/image/upload/v1/{{ imgZoom }}" ng-style="shoeZoom.imgZoom">
     </div>
   </div>
 </div>

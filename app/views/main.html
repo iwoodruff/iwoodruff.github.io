@@ -1,9 +1,8 @@
-<article class="container" id="artist" about-section about-section-transition-target="#gallery-carousel">
+<!-- <article class="container" id="artist" about-section about-section-transition-target="#gallery-carousel">
   <div class="row">
     <div class="col-sm-7">
       <ul id="gallery-carousel" rn-carousel rn-carousel-indicator rn-carousel-buffered rn-carousel-index>
         <li ng-repeat="image in Main.gallery.rows track by $index">
-<!--           <div ng-if="carouselIndex == $index" ng-init="Main.updateIndex(carouselIndex)"></div> -->
           <parallax-zoom class="gallery-image" parallax-zoom-options="{ default : '{{ image.lrgUrl }}', zoom : '{{ image.zoomUrl }}', fullWidth : false }"></parallax-zoom>
         </li>
       </ul>
@@ -33,44 +32,32 @@
           Drawing, building, and writing are the toys of my leisure.<br/>
         </h6>
       </aside>
-
-<!--       <aside ng-repeat="image in Main.gallery.rows track by $index" ng-if="Main.index == $index">
-        {{ Main.index }}{{ $index }}
-        <h5>{{ image.title }}</h5>
-        <h5>{{ image.dimensions }}</h5>
-        <label>{{ image.descriptionHeader }}</label>
-        <p ng-repeat="sentence in image.descriptionBody">{{ sentence }}</p>
-      </aside> -->
     </div>
   </div>
 </article>
-
+ -->
 
 <article about-section id="nerd" about-section-transition-target="#shoe-container">
-  <div class="rotators">
-    <img ng-src="http://res.cloudinary.com/digbk5qam/image/upload/v1/{{ rotatorUrl }}" ng-repeat="rotatorUrl in Main.rotators track by $index" ng-show="activeRotator == $index" />
-  </div>
-  <div id="shoe-container">
-    <shoe-zoom shoe-zoom-options="{ default : 'portfolio_gallery/shoe/web_shoe_lrg', zoom : 'portfolio_gallery/shoe/web_shoe_zoom', fullWidth : true, hoverGrid : true }"></shoe-zoom>
-  </div>
+  <hgroup class="container">
+    <h2>Mind of a Nerd</h2>
+  </hgroup>
 
-  <article class="grid-caption grounded" ng-if="!showZoom">
-    <h4><span ng-repeat="letter in Main.activeBox.description track by $index">{{ letter.letter }}</span></h4>
-  </article>
+  <div id="shoe-container">
+    <div class="rotators">
+      <img ng-src="http://res.cloudinary.com/digbk5qam/image/upload/v1/{{ rotatorUrl }}" ng-repeat="rotatorUrl in Main.rotators track by $index" ng-show="activeRotator == $index" />
+    </div>
+
+    <shoe-zoom shoe-zoom-options="{ default : 'portfolio_gallery/shoe/web_shoe_lrg', zoom : 'portfolio_gallery/shoe/web_shoe_zoom', fullWidth : true, hoverGrid : true }"></shoe-zoom>
+
+    <article class="grid-caption grounded" ng-if="!showZoom">
+      <h4><span ng-repeat="letter in Main.activeBox.description track by $index">{{ letter.letter }}</span></h4>
+    </article>
+  </div>
 
   <div class="container">
     <div class="row">
-      <div class="col-sm-6 col-sm-offset-5">
-        <hgroup>
-          <h2>Mind of a Nerd</h2>
-        </hgroup>
+      <div class="col-sm-8 col-sm-offset-2">
         <h6>
-<!--           While building exhibits at the Museum of Natural History,<br/>
-          Neil Degrasse Tyson spilled my drink on me!<br/>
-          He then owned a reference I made to Star Wars...<br/>
-          It was the best moment of my life so far.
-
-          <br/><br/> -->
 
           <span class="caps">I</span>t is no secret that I'm a huge nerd,<br/>
           Who loves words, history, fantasy, and the absurd.<br/>

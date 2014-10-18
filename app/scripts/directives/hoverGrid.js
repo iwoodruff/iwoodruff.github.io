@@ -3,7 +3,7 @@
 portfolioApp.directive('hoverGrid', ['$compile', function ($compile) {
   return {
     restrict : 'A',
-    priority : 1,
+    require : '^shoeZoom',
     link : function (scope, element, attrs) {
 
       var browserWindow = angular.element(window),

@@ -5,7 +5,6 @@
 portfolioApp.directive('shoeZoom', ['$timeout', '$q', function ($timeout, $q) {
   return {
     restrict : 'E',
-    priority : 5,
     templateUrl : 'views/partials/shoeDisplay.html',
     link : function (scope, element, attrs) {
       var browserWindow = angular.element(window),
@@ -157,6 +156,8 @@ portfolioApp.directive('shoeZoom', ['$timeout', '$q', function ($timeout, $q) {
           x,
           y
 
+      console.log($element.find('.img-lrg')[0].offsetWidth)
+
       $scope.showZoom = false;
 
       $scope.regenerateGrid = function () {
@@ -166,8 +167,6 @@ portfolioApp.directive('shoeZoom', ['$timeout', '$q', function ($timeout, $q) {
 
           x = 0,
           y = 0;
-
-          console.log(gridCaptions, x, gridCaptions[x].length)
 
           var len = gridCaptions[x].length;
 
@@ -183,8 +182,6 @@ portfolioApp.directive('shoeZoom', ['$timeout', '$q', function ($timeout, $q) {
               regenerateGrid = undefined;
 
               if (!!toggle) {
-                console.log('recursing', toggle);
-
                 regenerate(false);
 
                 $scope.showZoom = !$scope.showZoom;

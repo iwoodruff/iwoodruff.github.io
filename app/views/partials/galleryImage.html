@@ -3,7 +3,7 @@
     <img ng-src="http://res.cloudinary.com/digbk5qam/image/upload/v1/{{ imgDefault }}" ng-click="toggleZoom()" class="img-responsive" ng-class="{ 'hover-grid-target' : hoverGrid }">
   </div>
 
-  <div class="img-zoom" ng-class="{ 'show' : showZoom }">
+  <div class="img-zoom" ng-class="{ 'show' : showZoom }" ng-init="parallaxZoom.zoomLoaded()">
     <img ng-src="http://res.cloudinary.com/digbk5qam/image/upload/v1/{{ imgZoom }}">
   </div>
 </div>

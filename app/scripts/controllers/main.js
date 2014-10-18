@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('portfolioApp')
-  .controller('MainCtrl', function ($location, $scope, GetJson, $anchorScroll, $filter) {
+  .controller('MainCtrl', function ($location, $scope, GetJson, $anchorScroll, $filter, $modal) {
 
     var ctrl = this;
 

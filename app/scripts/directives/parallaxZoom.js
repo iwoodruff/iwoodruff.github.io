@@ -6,6 +6,7 @@ portfolioApp.directive('parallaxZoom', ['$timeout', '$q', function ($timeout, $q
   return {
     restrict : 'E',
     priority : 5,
+    controllerAs : 'parallaxZoom',
     templateUrl : 'views/partials/galleryImage.html',
     link : function (scope, element, attrs) {
       var browserWindow = angular.element(window),
@@ -149,7 +150,19 @@ portfolioApp.directive('parallaxZoom', ['$timeout', '$q', function ($timeout, $q
       });
     },
     controller : function ($scope, $element) {
-      var ctrl = this;
+      var ctrl = this,
+          zoomLoaded = false;
+
+
+      ctrl.lrgLoaded = function () {
+        $scope.orientElements();
+      };
+
+      ctrl.zoomLoaded = function () {
+        zoomLoaded = true;
+      };
+
+
 
       // this.zoomLoaded = $scope.zoomLoaded;
       // this.lrgLoaded = $scope.lrgLoaded;

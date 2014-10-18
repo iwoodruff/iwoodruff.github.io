@@ -5657,7 +5657,6 @@ section .img-zoom {
   border: 1px solid white;
   -webkit-box-shadow: 0px 2px 10px 0px #000000;
   box-shadow: 0px 2px 10px 0px #000000;
-  overflow: hidden;
   -webkit-transition: opacity 400ms;
   -o-transition: opacity 400ms;
   transition: opacity 400ms;
@@ -5668,6 +5667,7 @@ section .img-zoom.show {
 }
 section .img-zoom img {
   position: absolute;
+  opacity: 0.6;
 }
 section #artist #gallery-carousel .gallery-image {
   position: relative;
@@ -5692,7 +5692,7 @@ section #artist #gallery-carousel .gallery-image .img-container .img-zoom.img-wi
 }
 section #nerd .grid-caption {
   margin-top: -50px;
-  position: relative;
+  position: absolute;
   width: 500px;
   left: 50%;
   margin-left: -250px;
@@ -5742,6 +5742,7 @@ section #nerd .grid-input input {
 section #nerd #shoe-container .img-container {
   position: relative;
   overflow: hidden;
+  width: 100%;
 }
 section #nerd #shoe-container .img-container .img-lrg {
   position: relative;
@@ -5800,7 +5801,6 @@ section #nerd #shoe-container .img-container .caption-container {
   position: relative;
   width: 300px;
   height: 300px;
-  border: 1px solid white;
   border-radius: 300px;
   visibility: hidden;
   pointer-events: none;
