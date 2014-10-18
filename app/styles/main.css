@@ -5629,7 +5629,7 @@ section #artist #gallery-carousel .gallery-image .img-container .img-zoom.img-wi
   top: 50%;
 }
 section #nerd .grid-caption {
-  margin-top: -50px;
+  top: 0px;
   position: absolute;
   width: 500px;
   left: 50%;
@@ -5647,11 +5647,12 @@ section #nerd .grid-caption h4 {
 section #nerd .rotators {
   position: relative;
   z-index: 899;
+  padding-top: 25px;
 }
 section #nerd .rotators img {
-  -webkit-transition: opacity 500ms;
-  -o-transition: opacity 500ms;
-  transition: opacity 500ms;
+  -webkit-transition: opacity 400ms;
+  -o-transition: opacity 400ms;
+  transition: opacity 400ms;
   width: 350px;
   position: absolute;
   left: 50%;

@@ -12,7 +12,7 @@ portfolioApp.directive('shoeZoom', ['$timeout', '$q', function ($timeout, $q) {
       scope.imgDefault = options.default;
       scope.imgZoom = options.zoom;
     },
-    controller : function ($scope, $element, $interval) {
+    controller : function ($scope, $element, $interval, $timeout) {
       var ctrl = this,
           browserWindow = angular.element(window),
           imgContainer = $element.find('.img-container')[0],
@@ -104,6 +104,8 @@ portfolioApp.directive('shoeZoom', ['$timeout', '$q', function ($timeout, $q) {
 
       angular.element(imgLrg).on('load', orientElements);
 
+      var phantomRotate;
+
       ctrl.mousemove = function (event) {
         relativeX = event.pageX - imgContainer.offsetLeft;
         relativeY = event.pageY - imgContainer.offsetTop - 2000;
@@ -126,6 +128,12 @@ portfolioApp.directive('shoeZoom', ['$timeout', '$q', function ($timeout, $q) {
         } else if (percentageX > 0.8 && percentageX < 0.94) {
           activeRotator = 3;
         }
+
+        $interval.cancel(phantomRotate);
+
+        phantomRotate = $interval( function () {
+          $scope.$parent.Main.activeRotator = activeRotator < 8 ? activeRotator++ : activeRotator = 0;
+        }, 850);
 
         $scope.$parent.Main.activeRotator = activeRotator
 
@@ -169,6 +177,8 @@ portfolioApp.directive('shoeZoom', ['$timeout', '$q', function ($timeout, $q) {
       ctrl.activateBox = function (box) {
         if (box.description) {
           box.toggled = true;
+
+          ctrl.groundedCaption = box.description;
 
           activeBox = angular.copy(box);
 

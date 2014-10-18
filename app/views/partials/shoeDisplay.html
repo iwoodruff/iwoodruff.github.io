@@ -33,4 +33,8 @@
       <img ng-src="http://res.cloudinary.com/digbk5qam/image/upload/v1/{{ imgZoom }}" ng-style="shoeZoom.imgZoom">
     </div>
   </div>
+
+  <article class="grid-caption grounded" ng-if="!shoeZoom.showZoom">
+    <h4>{{ shoeZoom.groundedCaption }}</h4>
+  </article>
 </div>

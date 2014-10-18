@@ -44,6 +44,10 @@ angular.module('portfolioApp')
       }
     });
 
+    // var contactModal = $modal({ template : 'views/partials/contactModal.html' })
 
+    // ctrl.showContactModal = function () {
+    //   ctrl.email = {}
+    // };
 
   });
