@@ -5532,68 +5532,6 @@ header #concentric-oval {
   left: 50%;
   margin-left: -15px;
 }
-header #contact {
-  top: 0;
-  position: fixed;
-  left: 50%;
-  margin-left: -25px;
-  width: 50px;
-  height: 50px;
-  background-color: #777777;
-  border: 1px solid #f5f5f5;
-  border-radius: 200px;
-  padding: 3px 9px;
-  z-index: 99999;
-}
-header #contact a h2 {
-  margin: 0px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: lighter;
-  font-size: 18px;
-  text-transform: lowercase;
-}
-header #contact a:hover {
-  text-decoration: none;
-}
-header #contact a:hover h2 {
-  color: #f5f5f5;
-}
-#work-in-progress {
-  top: 50%;
-  left: 50%;
-  width: 200px;
-  height: 200px;
-  background-color: #777777;
-  border: 2px solid orange;
-  position: fixed;
-  z-index: 2005;
-  border-radius: 200px;
-  margin-top: -100px;
-  margin-left: -100px;
-  padding: 32px 58px;
-  opacity: 0;
-  pointer-events: none;
-  -webkit-transition: opacity 1s ease-in-out;
-  -o-transition: opacity 1s ease-in-out;
-  transition: opacity 1s ease-in-out;
-}
-#work-in-progress.active {
-  pointer-events: auto;
-  opacity: 1;
-}
-#work-in-progress h2 {
-  color: cyan;
-}
-#work-in-progress ul {
-  margin-left: 1px;
-  margin-top: 10px;
-}
-#work-in-progress ul li:first-child img {
-  width: 22px;
-}
-#work-in-progress img {
-  width: 33px;
-}
 section {
   border-left: 15px solid #0d0d0d;
   border-right: 15px solid #0d0d0d;
@@ -5711,16 +5649,15 @@ section #nerd .rotators {
   z-index: 899;
 }
 section #nerd .rotators img {
-  -webkit-transition: opacity 0.1s;
-  -o-transition: opacity 0.1s;
-  transition: opacity 0.1s;
+  -webkit-transition: opacity 500ms;
+  -o-transition: opacity 500ms;
+  transition: opacity 500ms;
   width: 350px;
   position: absolute;
   left: 50%;
   margin-left: -175px;
   pointer-events: none;
   display: block;
-  opacity: .6;
 }
 section #nerd .rotators .ng-hide {
   opacity: 0 !important;
@@ -5750,6 +5687,12 @@ section #nerd #shoe-container .img-container .img-lrg {
 }
 section #nerd #shoe-container .img-container .img-lrg img {
   width: 100%;
+  -webkit-transition: opacity 500ms;
+  -o-transition: opacity 500ms;
+  transition: opacity 500ms;
+}
+section #nerd #shoe-container .img-container .img-lrg img.dulled {
+  opacity: 0.6;
 }
 section #nerd #shoe-container .img-container .parallax-window {
   z-index: 1000;
@@ -5772,9 +5715,15 @@ section #nerd #shoe-container .img-container .grid-container .hover-grid-box {
   -webkit-transition: border-color 200ms;
   -o-transition: border-color 200ms;
   transition: border-color 200ms;
+  -webkit-transition: opacity 200ms;
+  -o-transition: opacity 200ms;
+  transition: opacity 200ms;
 }
 section #nerd #shoe-container .img-container .grid-container .hover-grid-box p {
   opacity: 0;
+}
+section #nerd #shoe-container .img-container .grid-container .hover-grid-box.dulled {
+  opacity: 0.4;
 }
 section #nerd #shoe-container .img-container .grid-container .hover-grid-box.hide-grid {
   opacity: 0;
@@ -5835,4 +5784,45 @@ section #nerd #shoe-container .img-container .caption-container.show h4 {
 section #nerd #shoe-container .img-container .caption-container .img-zoom {
   margin-top: 50px;
   margin-left: 50px;
+}
+footer #contact {
+  position: fixed;
+  margin-top: 100px;
+  top: 88%;
+  left: 50%;
+  margin-left: -25px;
+  width: 50px;
+  height: 50px;
+  background-color: #f5f5f5;
+  border: 1px solid #777777;
+  border-radius: 200px;
+  padding: 3px 9px;
+  z-index: 99999;
+  opacity: 0.3;
+  text-align: center;
+  box-shadow: 0px 0px 6px 3px #0d0d0d;
+  -webkit-transition: opacity 200ms;
+  -o-transition: opacity 200ms;
+  transition: opacity 200ms;
+  -webkit-transition: box-shadow 200ms;
+  -o-transition: box-shadow 200ms;
+  transition: box-shadow 200ms;
+}
+footer #contact:hover {
+  opacity: 1;
+  box-shadow: 0px 0px 0px 0px #0d0d0d;
+}
+footer #contact a {
+  margin: 0px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: lighter;
+  font-size: 18px;
+  text-transform: lowercase;
+  line-height: 1px;
+}
+footer #contact a:hover {
+  text-decoration: none;
+}
+footer #contact a:hover h2 {
+  color: #f5f5f5;
 }

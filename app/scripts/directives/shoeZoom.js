@@ -106,7 +106,7 @@ portfolioApp.directive('shoeZoom', ['$timeout', '$q', function ($timeout, $q) {
 
       ctrl.mousemove = function (event) {
         relativeX = event.pageX - imgContainer.offsetLeft;
-        relativeY = event.pageY - imgContainer.offsetTop;
+        relativeY = event.pageY - imgContainer.offsetTop - 2000;
 
         percentageX = relativeX / containerWidth;
         percentageY = relativeY / containerHeight;
@@ -127,9 +127,7 @@ portfolioApp.directive('shoeZoom', ['$timeout', '$q', function ($timeout, $q) {
           activeRotator = 3;
         }
 
-        if (activeRotator != ctrl.activeRotator) {
-          ctrl.activeRotator = activeRotator;
-        }
+        $scope.$parent.Main.activeRotator = activeRotator
 
         parallaxX = percentageX * diffContainerWidth;
 

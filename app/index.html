@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
   </head>
-  <body ng-app="portfolioApp" ng-controller="MainCtrl as Main" ng-click="comingSoon = false;">
+  <body ng-app="portfolioApp" ng-controller="MainCtrl as Main">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -28,23 +28,11 @@
       <concentric></concentric>
     </header>
 
-<!--     <section id="work-in-progress" ng-class="{ 'active' : comingSoon }">
-      <a href="http://roughwoods.herokuapp.com/"><h2 ng-mouseenter="shimmer();" ng-mouseleave="cancelShimmer();" target="_blank">Com<br/>Ing<br/>Soon</h2></a>
-      <ul class="list-inline">
-        <li>
-          <a href="https://github.com/iwoodruff" ng-mouseenter="shimmer();" ng-mouseleave="cancelShimmer();" target="_blank"><img src="images/github_icon.png"></a> 
-        </li>
-        <li>
-          <a href="www.linkedin.com/in/iwoodruff" ng-mouseenter="shimmer();" ng-mouseleave="cancelShimmer();" target="_blank"><img src="images/linkedin.png"></a>
-        </li>
-      </ul>
-    </section> -->
-
-    <section id="body-content" style="margin-top: 0px;" ng-view></section>
+    <section id="body-content" ng-view></section>
 
     <footer>
-      <div id="contact">
-        <a href=""><h2>Con-<br>tact</h2></a>
+      <div id="contact" ng-style="Main.contact">
+        <a href="">Con-<br>tact</a>
       </div>
     </footer>
     
@@ -91,8 +79,6 @@
 
         <script src="scripts/directives/aboutSection.js"></script>
         <script src="scripts/directives/parallaxZoom.js"></script>
-        <script src="scripts/directives/scrollParallax.js"></script>
-        <script src="scripts/directives/about.js"></script>
         <script src="scripts/directives/concentric.js"></script>
         <script src="scripts/directives/shoeZoom.js"></script>
 

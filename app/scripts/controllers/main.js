@@ -23,4 +23,27 @@ angular.module('portfolioApp')
       'portfolio_gallery/shoe/shoe7.png',
       'portfolio_gallery/shoe/shoe8.png',
     ];
+
+    ctrl.activeRotator = 0;
+
+    ctrl.showContact = false;
+
+    angular.element(window).bind('scroll', function (e) {
+      if (this.pageYOffset > 2000 && this.pageYOffset <= 2100) {
+        $scope.$apply(ctrl.contact = { 
+          'margin-top' : 2100 - this.pageYOffset + 'px'
+        });
+      } else if (this.pageYOffset > 2000) {
+        $scope.$apply(ctrl.contact = {
+          'margin-top' : 0 + 'px'
+        });
+      } else {
+        $scope.$apply(ctrl.contact = {
+          'margin-top' : 100 + 'px'
+        });
+      }
+    });
+
+
+
   });

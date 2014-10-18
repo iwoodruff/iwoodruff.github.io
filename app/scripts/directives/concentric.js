@@ -15,7 +15,6 @@ portfolioApp.directive('concentric', function ($timeout) {
           browserWindow = angular.element(window),
           scrollWindow = angular.element(document),
           windowHeight = browserWindow.innerHeight(),
-          contactContainer = angular.element('#contact'),
           percentageScrolled;
 
       logoContainer.css({
@@ -28,10 +27,6 @@ portfolioApp.directive('concentric', function ($timeout) {
 
       concentricOval.css({
         'top' : windowHeight * 0.5 
-      });
-
-      contactContainer.css({
-        'top' : windowHeight * 0.87
       });
 
       browserWindow.bind('resize', function () {
@@ -47,10 +42,6 @@ portfolioApp.directive('concentric', function ($timeout) {
 
         concentricOval.css({
           'top' : windowHeight * 0.5 
-        });
-
-        contactContainer.css({
-          'top' : windowHeight * 0.87
         });
       });
 
