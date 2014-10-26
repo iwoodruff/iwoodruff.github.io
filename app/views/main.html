@@ -76,7 +76,14 @@
 <article id="coder" class="container" about-section>
   <div class="row">
     <div class="col-sm-5">
-      
+      <div class="row">
+        <div class="col-xs-4">
+          <img src="http://res.cloudinary.com/digbk5qam/image/upload/v1/{{ asset.url }}" ng-repeat="asset in Main.frontEndAssets" class="img-responsive">
+        </div>
+        <div class="col-xs-4 col-sm-offset-1">
+          <img src="http://res.cloudinary.com/digbk5qam/image/upload/v1/{{ asset.url }}" ng-repeat="asset in Main.backEndAssets" class="img-responsive">
+        </div>
+      </div>
     </div>
     <div class="col-sm-7">
       <div class="page-header">

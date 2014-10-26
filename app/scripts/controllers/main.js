@@ -26,6 +26,25 @@ angular.module('portfolioApp')
 
     ctrl.activeRotator = 0;
 
+    ctrl.frontEndAssets = [ 
+      { url: 'portfolio_gallery/assets/angularLogo.png', blurb: '' },
+      { url: 'portfolio_gallery/assets/backboneLogo.png', blurb: '' },
+      { url: 'portfolio_gallery/assets/jqueryLogo.png', blurb: '' },
+      { url: 'portfolio_gallery/twigLogo.png', blurb: '' },
+      { url: 'portfolio_gallery/assets/lessLogo.png', blurb: '' },
+      { url: 'portfolio_gallery/assets/sassLogo.png', blurb: '' } 
+    ];
+
+
+    ctrl.backEndAssets = [ 
+      { url: 'portfolio_gallery/assets/salesforceLogo.png', blurb: '' },
+      { url: 'portfolio_gallery/assets/mongodbLogo.png', blurb: '' },
+      { url: 'portfolio_gallery/assets/railsLogo.png', blurb: '' },
+      { url: 'portfolio_gallery/assets/postgresqlLogo.png', blurb: '' },
+      { url: 'portfolio_gallery/assets/craftLogo.png', blurb: '' } 
+    ];
+
+
     ctrl.showContact = false;
 
     angular.element(window).bind('scroll', function (e) {
