@@ -52,12 +52,16 @@ portfolioApp.directive('shoeZoom', ['$timeout', '$q', function ($timeout, $q) {
       ctrl.gridContianer = {};
 
 
-      var windowDimensions = function () {
-        return {
-          h : browserWindow.height(),
-          w : browserWindow.width()
-        };
-      };
+      // var windowDimensions = function () {
+      //   return {
+            // no jq
+      //     height : window.innerHeight, // height of browser window, not document
+      //     width : window.innerWidth
+
+      //     h : browserWindow.height(),
+      //     w : browserWindow.width()
+      //   };
+      // };
 
       var orientElements = function () {
         ctrl.lrgLoaded = true;
@@ -99,8 +103,10 @@ portfolioApp.directive('shoeZoom', ['$timeout', '$q', function ($timeout, $q) {
         };
       };
 
-      $scope.$watch(windowDimensions, function (newVal, oldVal) {
-      }, true);
+      // $scope.$watch(windowDimensions, function (newVal, oldVal) {
+
+
+      // }, true);
 
       angular.element(imgLrg).on('load', orientElements);
 

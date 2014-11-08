@@ -1,9 +1,9 @@
 <article class="container" id="artist" about-section about-section-transition-target="#gallery-carousel">
   <div class="row">
     <div class="col-sm-7">
-      <ul id="gallery-carousel" rn-carousel rn-carousel-indicator rn-carousel-buffered rn-carousel-index>
+      <ul id="gallery-carousel" rn-carousel rn-carousel-indicator rn-carousel-buffered style="height: 900px">
         <li ng-repeat="image in Main.gallery.rows track by $index">
-          <parallax-zoom class="gallery-image" parallax-zoom-options="{ default : '{{ image.lrgUrl }}', zoom : '{{ image.zoomUrl }}', fullWidth : false }"></parallax-zoom>
+          <gallery-zoom class="gallery-image" gallery-zoom-img-lrg="{{ image.lrgUrl }}" gallery-zoom-img-zoom="{{ image.zoomUrl }}" zoom-options="{ imgLrg : '{{ image.lrgUrl }}', imgZoom : '{{ image.zoomUrl }}' }"></gallery-zoom>
         </li>
       </ul>
     </div>

@@ -1,9 +1,9 @@
-<div class="img-container">
-  <div class="img-lrg">
-    <img ng-src="http://res.cloudinary.com/digbk5qam/image/upload/v1/{{ imgDefault }}" ng-click="toggleZoom()" class="img-responsive" ng-class="{ 'hover-grid-target' : hoverGrid }">
+<div class="img-container" ng-click="galleryZoom.toggleZoom()" ng-style="galleryZoom.imgContainer">
+  <div class="img-lrg" ng-mousemove="galleryZoom.mousemove($event)">
+    <img ng-src="http://res.cloudinary.com/digbk5qam/image/upload/v1/{{ imgLrg }}" class="img-responsive" ng-style="galleryZoom.imgLrg">
   </div>
 
-  <div class="img-zoom" ng-class="{ 'show' : showZoom }" ng-init="parallaxZoom.zoomLoaded()">
-    <img ng-src="http://res.cloudinary.com/digbk5qam/image/upload/v1/{{ imgZoom }}">
+  <div class="img-zoom" ng-class="{ 'show' : galleryZoom.showZoom }" ng-style="galleryZoom.zoomView">
+    <img ng-src="http://res.cloudinary.com/digbk5qam/image/upload/v1/{{ imgZoom }}" ng-style="galleryZoom.imgZoom">
   </div>
 </div>
