@@ -1,6 +1,6 @@
 /**
  * Angular Carousel - Mobile friendly touch carousel for AngularJS
- * @version v0.3.5 - 2014-10-21
+ * @version v0.3.5 - 2014-11-06
  * @link http://revolunet.github.com/angular-carousel
  * @author Julien Bouquillon <julien@revolunet.com>
  * @license MIT License, http://www.opensource.org/licenses/MIT
@@ -105,10 +105,14 @@ angular.module('angular-carousel').run(['$templateCache', function($templateCach
 
     .service('DeviceCapabilities', function() {
 
+        // TODO: merge in a single function
+
         // detect supported CSS property
         function detectTransformProperty() {
-            var transformProperty = 'transform';
+            var transformProperty = 'transform',
+                safariPropertyHack = 'webkitTransform';
             if (typeof document.body.style[transformProperty] !== 'undefined') {
+
                 ['webkit', 'moz', 'o', 'ms'].every(function (prefix) {
                     var e = '-' + prefix + '-transform';
                     if (typeof document.body.style[e] !== 'undefined') {
@@ -117,6 +121,8 @@ angular.module('angular-carousel').run(['$templateCache', function($templateCach
                     }
                     return true;
                 });
+            } else if (typeof document.body.style[safariPropertyHack] !== 'undefined') {
+                transformProperty = '-webkit-transform';
             } else {
                 transformProperty = undefined;
             }
@@ -181,7 +187,7 @@ angular.module('angular-carousel').run(['$templateCache', function($templateCach
                     transformFrom = offset < (slideIndex * -100) ? 100 : 0;
                     degrees = offset < (slideIndex * -100) ? maxDegrees : -maxDegrees;
                     style[DeviceCapabilities.transformProperty] = slideTransformValue + ' ' + 'rotateY(' + degrees + 'deg)';
-                    style['transform-origin'] = transformFrom + '% 50%';
+                    style[DeviceCapabilities.transformProperty + '-origin'] = transformFrom + '% 50%';
                 } else if (transitionType == 'zoom') {
                     style[DeviceCapabilities.transformProperty] = slideTransformValue;
                     var scale = 1;
@@ -189,7 +195,7 @@ angular.module('angular-carousel').run(['$templateCache', function($templateCach
                         scale = 1 + ((1 - distance) * 2);
                     }
                     style[DeviceCapabilities.transformProperty] += ' scale(' + scale + ')';
-                    style['transform-origin'] = '50% 50%';
+                    style[DeviceCapabilities.transformProperty + '-origin'] = '50% 50%';
                     opacity = 0;
                     if (Math.abs(absoluteLeft) < 100) {
                         opacity = 0.3 + distance * 0.7;
@@ -221,6 +227,18 @@ angular.module('angular-carousel').run(['$templateCache', function($templateCach
                 rubberTreshold = 3;
 
             var requestAnimationFrame = $window.requestAnimationFrame || $window.webkitRequestAnimationFrame || $window.mozRequestAnimationFrame;
+
+            function getItemIndex(collection, target, defaultIndex) {
+                var result = defaultIndex;
+                collection.every(function(item, index) {
+                    if (angular.equals(item, target)) {
+                        result = index;
+                        return false;
+                    }
+                    return true;
+                });
+                return result;
+            };
 
             return {
                 restrict: 'A',
@@ -355,6 +373,7 @@ angular.module('angular-carousel').run(['$templateCache', function($templateCach
                         };
 
                         function goToSlide(index, slideOptions) {
+                            //console.log('goToSlide', arguments);
                             // move a to the given slide index
                             if (index === undefined) {
                                 index = scope.carouselIndex;
@@ -509,11 +528,23 @@ angular.module('angular-carousel').run(['$templateCache', function($templateCach
                         }
 
                         if (isRepeatBased) {
-                            scope.$watchCollection(repeatCollection, function(newValue, oldValue) {
-                                //console.log('repeatCollection', arguments);
+                            // use rn-carousel-deep-watch to fight the Angular $watchCollection weakness : https://github.com/angular/angular.js/issues/2621
+                            // optional because it have some performance impacts (deep watch)
+                            var deepWatch = (iAttributes.rnCarouselDeepWatch!==undefined);
+
+                            scope[deepWatch?'$watch':'$watchCollection'](repeatCollection, function(newValue, oldValue) {
+                                //console.log('repeatCollection', currentSlides);
+                                var oldSlides = (currentSlides || newValue).slice();
                                 currentSlides = newValue;
-                                goToSlide(scope.carouselIndex);
-                            });
+                                // if deepWatch ON ,manually compare objects to guess the new position
+                                if (deepWatch && angular.isArray(newValue)) {
+                                    var activeElement = oldValue[scope.carouselIndex];
+                                    var newIndex = getItemIndex(newValue, activeElement, scope.carouselIndex);
+                                    goToSlide(newIndex, {animate: false});
+                                } else {
+                                    goToSlide(scope.carouselIndex, {animate: false});
+                                }
+                            }, true);
                         }
 
                         function swipeEnd(coords, event, forceAnimation) {
