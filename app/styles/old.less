@@ -1,7 +1,83 @@
 @import 'variables.less';
 @import 'vendor-prefixes.less';
-@import 'concentric.less';
-@import 'tour.less';
+@import url(http://fonts.googleapis.com/css?family=Arvo|PT+Sans);
+
+
+// @iterations : 200;
+
+.loopingClass(@index) when (@index < 101) {
+  #circle_@{index} {
+    width: @index*20px;
+    height: @index*20px;
+    margin-left: -@index*10px;
+    margin-top: -@index*10px;
+    z-index: @index + 5;
+
+    &.active {
+      border: 2px solid lighten(@gray-darkest, @index * 2%);
+      // border: 2px solid spin(cyan, @index * 3);
+    }
+
+    &.edge {
+      border-color: cyan;
+    }
+  }
+
+  #oval_@{index} {
+    width: @index*40px;
+    height: @index*13px;
+    margin-left: -@index*20px;
+    margin-top: -@index*6.5px;
+    z-index: @index;
+
+    &.active {
+      border: 2px solid darken(@gray-lightest, @index * 1.5%);
+      // border: 2px solid spin(orange, @index * -3);
+    }
+
+    &.edge {
+      border-color: orange;
+    }
+  }
+
+  #logo_@{index} {
+    pointer-events: none;
+    z-index: 0;
+    width: @index * 30px;
+    height: @index * 10px;
+    margin-left: -@index*15px;
+    margin-top: -@index*5px;
+    // border: 1px solid lighten(@gray-darkest, @index * 2%);
+    border: 1px solid @gray-darkest;
+    .transition(border 0.5s ease-in-out);
+
+    &.active {
+      border: 1px solid darken(desaturate(spin(orange, @index * 36%), @index * 5%), @index + 1%);
+      // .transition(border s ease-in-out);
+    }
+  }
+
+  .loopingClass (@index + 1);
+}
+
+.loopingClass(0);
+
+
+.textLoop(@index) when (@index < 50) {
+  .char_@{index} {
+    .rotate(@index*-5deg);
+  }
+
+  .char_line-break_@{index} {
+    .rotate(@index*-5deg);
+    padding-top: 233px !important;
+  }
+
+  .textLoop(@index + 1);
+}
+
+.textLoop(-50);
+
 
 h1 {
   font-weight: lighter;
@@ -29,6 +105,87 @@ h2 {
 
 a:hover {
   text-decoration: none;
+}
+
+header {
+  concentric {
+    height: 2000px;
+    background-color: @gray-darkest;
+    top: 0;
+    position: fixed;
+    width: 100%;
+    display: block;
+  }
+
+  #logo {
+    box-shadow: 0px 0px 6px 3px @gray-darkest;
+    position: absolute;
+    z-index: 1100;
+    width: 300px;
+    height: 100px;
+    left: 50%;
+    margin-left: -150px;
+    margin-top: -50px;
+    padding: 20px 15px 0px 15px;
+    // border: 2px solid lighten(@gray-darkest, 10%);
+    background-color: @gray-darkest;
+    border-radius: 100px;
+
+    h1 {
+      z-index: 1100;
+      position: relative;
+      color: @gray-lighter;
+      text-align: center;
+      text-shadow: black 2px 2px 1px;
+    }
+
+    ul {
+      font-family: @font-family-sans-serif;
+      z-index: 1100;
+      position: relative;
+      color: @gray;
+      text-align: center;
+      font-weight: lighter;
+      text-transform: lowercase;
+      letter-spacing: 1.5px;
+
+      a:hover {
+        color: @gray-lighter;
+        text-decoration: none;
+      }
+    }
+
+    #concentric-logo {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+    }
+  }
+
+  .concentric {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    border-radius: 1000px;
+  }
+
+  #concentric-circular {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    margin-top: -5px;
+    left: 50%;
+    margin-left: -5px;
+  }
+
+  #concentric-oval {
+    position: absolute;
+    width: 30px;
+    height: 10px;
+    margin-top: -5px;
+    left: 50%;
+    margin-left: -15px;
+  }
 }
 
 #body-content {
@@ -180,21 +337,6 @@ a:hover {
 
   #nerd {
     padding-bottom: 50px;
-
-    .textLoop(@index) when (@index < 50) {
-      .char_@{index} {
-        .rotate(@index*-5deg);
-      }
-
-      .char_line-break_@{index} {
-        .rotate(@index*-5deg);
-        padding-top: 233px !important;
-      }
-
-      .textLoop(@index + 1);
-    }
-
-    .textLoop(-50);
 
     .grid-caption {
       top: 0px;

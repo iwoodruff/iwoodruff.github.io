@@ -34,37 +34,43 @@ portfolioApp.directive('galleryZoom', ['$timeout', function ($timeout) {
           imgY
 
       ctrl.showZoom = false;
+      ctrl.showLrg = false;
 
+      angular.element(imgLrg).on('load', orientElements);
+
+      window.onresize = function () { orientElements() };
 
       function orientElements () {
-        // windowWidth = window.innerWidth;
-        windowHeight = window.innerHeight * 0.8;
+        if (imgLrg.offsetHeight) {
+          windowHeight = window.innerHeight * 0.8;
 
-        heightLrg = imgLrg.offsetHeight;
-        widthLrg = imgLrg.offsetWidth;
-        heightZoom = heightLrg * 1.4;
-        widthZoom = widthLrg * 1.4;
-        widthZoomView = zoomView.offsetWidth;
-        heightZoomView = zoomView.offsetHeight;
+          heightLrg = imgLrg.offsetHeight;
+          widthZoomView = zoomView.offsetWidth;
+          heightZoomView = zoomView.offsetHeight;
+          widthLrg = imgLrg.offsetWidth;
 
-        if (heightLrg) {
+          heightZoom = heightLrg * 1.4;
+          widthZoom = widthLrg * 1.4;
+
+          ctrl.showLrg = true;
+
           ctrl.imgContainer = {
             'height' : windowHeight + 'px'
           };
 
+          angular.element('#gallery-carousel').css('height', windowHeight);
+
           ctrl.imgLrg = {
             'height' : windowHeight + 'px',
-            'margin-left' : (widthLrg * -0.5) + 'px'
           };
 
           ctrl.zoomView = {
             'margin-left' : (widthLrg * -0.5) + 'px'
           };
 
-          console.log(ctrl.imgLrg)
+          ctrl.imgLrg['margin-left'] = widthLrg * -0.5 + 'px';
 
           ctrl.imgZoom = {
-            // 'margin-left' : (widthZoom * -0.5) + 'px',
             'height' : heightZoom + 'px'
           };
         } else {
@@ -74,19 +80,15 @@ portfolioApp.directive('galleryZoom', ['$timeout', function ($timeout) {
         }
       };
 
-      angular.element(imgLrg).on('load', orientElements);
-
       ctrl.mousemove = function (event) {
         relativeX = event.pageX - imgLrg.offsetLeft;
-        relativeY = event.pageY - imgLrg.offsetTop;
+        relativeY = event.pageY - imgLrg.offsetTop - 2000;
         
         percentageX = event.offsetX / imgLrg.offsetWidth;
         percentageY = event.offsetY / imgLrg.offsetHeight;
 
         zoomX = -1 * percentageX * widthZoomView;
         zoomY = -1 * percentageY * heightZoomView;
-
-        console.log(zoomX)
 
         ctrl.zoomView['webkitTransform'] = 'translate3D(' + (event.offsetX + zoomX) + 'px, ' + (event.offsetY + zoomY) + 'px, 0px)';
 

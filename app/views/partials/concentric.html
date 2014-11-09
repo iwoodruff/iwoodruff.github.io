@@ -1,9 +1,10 @@
 <div id="logo">
   <a href ng-click="radiate()"><h1 ng-mouseenter="shimmer()" ng-mouseleave="cancelShimmer()">I<span class="caps">saac</span> W<span class="caps">oodruff</span></h1></a>
-  <ul class="list-inline">
-    <li><a href ng-click="radiate('coming-soon');" ng-mouseenter="shimmer();" ng-mouseleave="cancelShimmer();">Artist</a></li>
-    <li><a href ng-click="radiate('coming-soon');" ng-mouseenter="shimmer();" ng-mouseleave="cancelShimmer();">Nerd</a></li>
-    <li><a href ng-click="radiate('coming-soon');" ng-mouseenter="shimmer();" ng-mouseleave="cancelShimmer();">Coder</a></li>
+  <ul class="list-inline" tourtip="{{ Main.tour[getCurrentStep()].body }}" tourtip-next-label="Next" tourtip-placement="top" tour-snippet="{{ Main.tour[getCurrentStep()].snippet }}" tour-action="radiate" tourtip-step="0">
+  <a ng-click="openTour('#logo', 0, 0, 2500)">TOUR TEST</a>
+    <li><a href ng-click="radiate();" ng-mouseenter="shimmer();" ng-mouseleave="cancelShimmer();">Artist</a></li>
+    <li><a href ng-click="radiate();" ng-mouseenter="shimmer();" ng-mouseleave="cancelShimmer();">Nerd</a></li>
+    <li><a href ng-click="radiate();" ng-mouseenter="shimmer();" ng-mouseleave="cancelShimmer();">Coder</a></li>
   </ul>
 
   <div id="concentric-logo">
@@ -12,9 +13,9 @@
 </div>
 
 <div id="concentric-circular">
-  <div id="circle_{{ $index }}" class="concentric" ng-class="{ 'active' : active >= {{ $index }}, 'edge' : active == {{ $index }} }" ng-repeat="i in circleLimit track by $index"></div>
+  <div id="circle_{{ $index }}" class="concentric" ng-class="{ 'active{{ '-' + random }}' : active >= {{ $index }}, 'edge' : active == {{ $index }} }" ng-repeat="i in circleLimit track by $index"></div>
 </div>
 
 <div id="concentric-oval">
-  <div id="oval_{{ $index + 5 }}" class="concentric" ng-class="{ 'active' : active >= {{ $index }}, 'edge' : active == {{ $index }} }" ng-repeat="i in ovalLimit track by $index"></div>
+  <div id="oval_{{ $index + 5 }}" class="concentric" ng-class="{ 'active{{ '-' + random }}' : active >= {{ $index }}, 'edge' : active == {{ $index }} }" ng-repeat="i in ovalLimit track by $index"></div>
 </div>

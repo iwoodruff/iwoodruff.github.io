@@ -5,6 +5,38 @@ angular.module('portfolioApp')
 
     var ctrl = this;
 
+    ctrl.currentStep = 0;
+
+    ctrl.postTour = function () {
+      console.log('tour over!');
+    };
+
+    ctrl.postStep = function () {
+      console.log('step over!');
+    };
+
+    ctrl.tour = [
+      {
+        body : "hey blah blah",
+        snippet : "blah blah blah blah"
+      },
+      {
+        body : "",
+        snippet : "",
+        action : null
+      },
+      {
+        body : "",
+        snippet : "",
+        action : null
+      },
+      {
+        body : "",
+        snippet : "",
+        action : null
+      },
+    ]
+
     GetJson.getGallery().then( function (data) {
       ctrl.gallery = data;
     });
@@ -28,7 +60,7 @@ angular.module('portfolioApp')
 
     ctrl.frontEndAssets = [ 
       { url: 'portfolio_gallery/assets/angularLogo.png', blurb: {
-          'title' : 'Besides using AngularJs for this static site, I\'ve worked in this intuitive and powerful framework building a financial-planning app and too many interactive lists and forms to count. It\'s the best.',
+          'title' : 'Besides using AngularJs for this static site, I\'ve worked in this intuitive and powerful framework building a financial-planning app, a scholarship foundation\'s internal portal and too many interactive lists and forms to count. It\'s the best.',
           container : 'body',
           html : true
         }
@@ -64,6 +96,11 @@ angular.module('portfolioApp')
     ctrl.backEndAssets = [ 
       { url: 'portfolio_gallery/assets/salesforceLogo.png', blurb: {
           'title' : 'Incredibly powerful Cloud CRM. The majority of my recent back-end work has been in SalesForce\'s Java-based Apex code.',
+          container : 'body'
+        }
+      },
+      { url: 'portfolio_gallery/assets/nodejsLogo.png', blurb: {
+          'title' : 'Used it to build a headless NodeJs app which served as a waypoint to migrate data from Stripe\'s API to a SalesForce database.',
           container : 'body'
         }
       },
@@ -108,7 +145,7 @@ angular.module('portfolioApp')
       }
     });
 
-    // var contactModal = $modal({ template : 'views/partials/contactModal.html' })
+    // var contactModal = $modal({ scope : $scope, template : 'views/partials/contactModal.html', container : 'body' });
 
     // ctrl.showContactModal = function () {
     //   ctrl.email = {}

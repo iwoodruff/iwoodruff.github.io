@@ -1,7 +1,7 @@
-<article class="container" id="artist" about-section about-section-transition-target="#gallery-carousel">
+<section class="container" id="artist" about-section about-section-transition-target="#gallery-carousel">
   <div class="row">
     <div class="col-sm-7">
-      <ul id="gallery-carousel" rn-carousel rn-carousel-indicator rn-carousel-buffered style="height: 900px">
+      <ul id="gallery-carousel" rn-carousel rn-carousel-indicator rn-carousel-buffered style="height: 400px;" tourtip="TEST TEST TEST 2" tourtip-next-label="HEY FUCKER" tourtip-placement="right" tourtip-step="1">
         <li ng-repeat="image in Main.gallery.rows track by $index">
           <gallery-zoom class="gallery-image" gallery-zoom-img-lrg="{{ image.lrgUrl }}" gallery-zoom-img-zoom="{{ image.zoomUrl }}" zoom-options="{ imgLrg : '{{ image.lrgUrl }}', imgZoom : '{{ image.zoomUrl }}' }"></gallery-zoom>
         </li>
@@ -15,7 +15,7 @@
       </div>
       <aside>
         <h6>
-          <span class="caps">I</span>n schoool I studied history and studio art,<br/>
+          <span class="caps">I</span>n school I studied history and studio art,<br/>
           Staying true to the passions at the heart<br/>
           of my being, my great love is seeing<br/>
           how creativity can express itself through form and feeling.<br/>
@@ -34,12 +34,14 @@
       </aside>
     </div>
   </div>
-</article>
+</section>
 
 
-<article about-section id="nerd" about-section-transition-target="#shoe-container">
+<section about-section id="nerd" about-section-transition-target="#shoe-container">
   <div class="container">
-    <h2>Mind of a Nerd</h2>
+    <div class="page-header">
+      <h2><span class="caps">M</span>ind of a <span class="caps">N</span>erd</h2>
+    </div>
   </div>
 
   <div id="shoe-container">
@@ -70,27 +72,29 @@
       </div>
     </div>
   </div>
-</article>
+</section>
 
 
-<article id="coder" class="container" about-section>
+<section id="coder" class="container" about-section about-section-transition-target="#coder-assets">
   <div class="row">
     <div class="col-sm-5">
-      <div class="row">
-        <div class="col-xs-4">
-          <img src="http://res.cloudinary.com/digbk5qam/image/upload/v1/{{ asset.url }}" ng-repeat="asset in Main.frontEndAssets" class="img-responsive" bs-tooltip="{{ asset.blurb }}" data-placement="right">
-        </div>
-        <div class="col-xs-4 col-sm-offset-1">
-          <img src="http://res.cloudinary.com/digbk5qam/image/upload/v1/{{ asset.url }}" ng-repeat="asset in Main.backEndAssets" class="img-responsive" bs-tooltip="{{ asset.blurb }}" data-placement="left">
+      <div id="coder-assets">
+        <div class="row">
+          <div class="col-xs-offset-1 col-xs-4">
+            <img ng-src="http://res.cloudinary.com/digbk5qam/image/upload/v1/{{ asset.url }}" class="img-responsive" ng-repeat="asset in Main.frontEndAssets" bs-tooltip="{{ asset.blurb }}" data-placement="right">
+          </div>
+          <div class="col-xs-4 col-xs-offset-1">
+            <img ng-src="http://res.cloudinary.com/digbk5qam/image/upload/v1/{{ asset.url }}" class="img-responsive" ng-repeat="asset in Main.backEndAssets" bs-tooltip="{{ asset.blurb }}" data-placement="right">
+          </div>
         </div>
       </div>
     </div>
     <div class="col-sm-7">
       <div class="page-header">
-        <h2>Hands of a Coder</h2>
+        <h2><span class="caps">H</span>ands of a <span class="caps">C</span>oder</h2>
       </div>
       <h6>
-        We've seen an eye for design and a nerd's mind.<br/>
+        <span class="caps">W</span>e've seen an eye for design and a nerd's mind.<br/>
         These passions find form through my text-editor, Sublime.<br/>
         What inspires my scripts, if we're being realistic,<br/>
         Is that a readable style makes code artistic.<br/>
@@ -99,7 +103,7 @@
 
         <br/><br/>
 
-        (Check out a tour of this site's Angular directives).
+        (Check out a <a href ng-click="openTour('#logo', 0, 0, 2500)">tour</a> of this site's Angular directives).
 
         <br/><br/>
 
@@ -118,4 +122,4 @@
       
     </div>
   </div>
-</article>
+</section>

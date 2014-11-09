@@ -8,7 +8,8 @@ var portfolioApp = angular
     'ngSanitize',
     'ngAnimate',
     'mgcrea.ngStrap',
-    'angular-carousel'
+    'angular-carousel',
+    'angular-tour'
   ]);
 
 portfolioApp.config( function ($routeProvider, $logProvider) {

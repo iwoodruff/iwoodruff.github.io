@@ -63,6 +63,8 @@ portfolioApp.directive('shoeZoom', ['$timeout', '$q', function ($timeout, $q) {
       //   };
       // };
 
+      window.onresize = function () { orientElements() };
+
       var orientElements = function () {
         ctrl.lrgLoaded = true;
 

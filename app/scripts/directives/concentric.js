@@ -17,6 +17,8 @@ portfolioApp.directive('concentric', function ($timeout) {
           windowHeight = browserWindow.innerHeight(),
           percentageScrolled;
 
+
+
       logoContainer.css({
         'top' : windowHeight * 0.5 
       });
@@ -46,8 +48,8 @@ portfolioApp.directive('concentric', function ($timeout) {
       });
 
       scope.logoLimit = new Array(11);
-      scope.ovalLimit = new Array(50);
-      scope.circleLimit = new Array(70);
+      scope.ovalLimit = new Array(85);
+      scope.circleLimit = new Array(85);
     },
     controller : function ($scope, $element, $interval, $timeout, $location) {
       var shimmer,
@@ -55,6 +57,9 @@ portfolioApp.directive('concentric', function ($timeout) {
           shimmerIn = true;
 
       $scope.active = false;
+
+      $scope.random = Math.floor(Math.random() * 5);
+      // $scope.random = 5;
 
       $scope.shimmer = function () {
         shimmerIn = !shimmerIn;
@@ -100,7 +105,7 @@ portfolioApp.directive('concentric', function ($timeout) {
 
           percentageScrolled = (browserWindow.scrollTop()) / 2000;
 
-          $scope.$apply($scope.active = Math.round(percentageScrolled * 50));
+          $scope.$apply($scope.active = Math.round(percentageScrolled * 80));
         }
       });
 
@@ -128,10 +133,6 @@ portfolioApp.directive('concentric', function ($timeout) {
             // $location.hash(path);
 
             var i = 0;
-
-            $timeout( function () {
-              $scope.comingSoon = true;
-            });
           }
         }, 40, (2 * $scope.ovalLimit.length));
       };
