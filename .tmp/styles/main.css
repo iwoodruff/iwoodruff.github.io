@@ -8667,6 +8667,7 @@ header #concentric-oval {
   overflow: scroll;
   z-index: 9999;
   max-width: 350px;
+  opacity: 1;
 }
 .tour-tip p {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
