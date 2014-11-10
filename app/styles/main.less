@@ -27,8 +27,14 @@ h2 {
   }
 }
 
-a:hover {
-  text-decoration: none;
+a {
+  font-family: @font-family-sans-serif;
+  font-weight: lighter;
+  
+  &:hover {
+    text-decoration: none;
+    color: @gray-lightest;
+  }
 }
 
 #body-content {
@@ -120,6 +126,16 @@ a:hover {
     // =================
 
     .transition(opacity 400ms);
+
+    &.tour-show {
+      overflow: visible;
+      visibility: visible;
+      opacity: 1;
+
+      img {
+        opacity: 0.6;
+      }
+    }
 
     &.show {
       visibility: visible;
@@ -403,7 +419,7 @@ a:hover {
 }
 
 footer {
-  #contact {
+  .contact {
     position: fixed;
     margin-top: 100px;
     top: 88%;
@@ -422,6 +438,8 @@ footer {
 
     .transition(opacity 200ms);
     .transition(box-shadow 200ms);
+    .transition(width 500ms);
+    .transition(margin-left 500ms);
     // .transition(margin-top 1000ms);
 
     // &.show-contact {
@@ -431,6 +449,11 @@ footer {
     &:hover {
       opacity: 1;
       box-shadow: 0px 0px 0px 0px @gray-darkest;
+    }
+
+    &.expanded {
+      width: 200px;
+      margin-left: -100px;
     }
 
     a {

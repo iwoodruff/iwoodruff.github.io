@@ -1,13 +1,13 @@
 <div id="logo">
   <a href ng-click="radiate()"><h1 ng-mouseenter="shimmer()" ng-mouseleave="cancelShimmer()">I<span class="caps">saac</span> W<span class="caps">oodruff</span></h1></a>
-  <ul class="list-inline" tourtip="{{ Main.tour[getCurrentStep()].body }}" tourtip-next-label="Next" tourtip-placement="top" tour-snippet="{{ Main.tour[getCurrentStep()].snippet }}" tour-action="radiate" tourtip-step="0">
-  <a ng-click="openTour('#logo', 0, 0, 2500)">TOUR TEST</a>
+  <ul class="list-inline">
+    <a ng-click="openTour('#logo', 0, 0, 2500)">TOUR TEST</a>
     <li><a href ng-click="radiate();" ng-mouseenter="shimmer();" ng-mouseleave="cancelShimmer();">Artist</a></li>
     <li><a href ng-click="radiate();" ng-mouseenter="shimmer();" ng-mouseleave="cancelShimmer();">Nerd</a></li>
     <li><a href ng-click="radiate();" ng-mouseenter="shimmer();" ng-mouseleave="cancelShimmer();">Coder</a></li>
   </ul>
 
-  <div id="concentric-logo">
+  <div id="concentric-logo" tourtip="{{ Main.tour[getCurrentStep()].body }}" tourtip-next-label="next: image zooming" tourtip-placement="top" tour-snippet="{{ Main.tour[getCurrentStep()].snippet }}" tour-action="radiate" tourtip-step="0">
     <div class="concentric" ng-repeat="i in logoLimit track by $index" id="logo_{{ $index }}" ng-class="{ 'active' : shimmerActive == {{ $index }} }"></div>
   </div>
 </div>

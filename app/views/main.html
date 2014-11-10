@@ -1,7 +1,7 @@
 <section class="container" id="artist" about-section about-section-transition-target="#gallery-carousel">
   <div class="row">
     <div class="col-sm-7">
-      <ul id="gallery-carousel" rn-carousel rn-carousel-indicator rn-carousel-buffered style="height: 400px;" tourtip="TEST TEST TEST 2" tourtip-next-label="HEY FUCKER" tourtip-placement="right" tourtip-step="1">
+      <ul id="gallery-carousel" rn-carousel rn-carousel-indicator rn-carousel-buffered style="height: 400px;" tourtip="{{ Main.tour[getCurrentStep()].body }}" tourtip-next-label="next: programmatic grid" tourtip-step="1" tour-action="Main.showZoomImg">
         <li ng-repeat="image in Main.gallery.rows track by $index">
           <gallery-zoom class="gallery-image" gallery-zoom-img-lrg="{{ image.lrgUrl }}" gallery-zoom-img-zoom="{{ image.zoomUrl }}" zoom-options="{ imgLrg : '{{ image.lrgUrl }}', imgZoom : '{{ image.zoomUrl }}' }"></gallery-zoom>
         </li>

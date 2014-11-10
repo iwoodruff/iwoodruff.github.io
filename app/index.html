@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="bower_components/animate.css/animate.css" />
     <link rel="stylesheet" href="bower_components/angular-carousel/dist/angular-carousel.css" />
     <!-- endbower -->
-    <link rel="stylesheet" href="bower_components/angular-tour/dist/angular-tour.css">
     <link rel="stylesheet" href="/bower_components/angular-carousel/dist/angular-carousel.min.css">
     <link rel="stylesheet" href="/bower_components/ngAnimate/css/ng-animation.css">
 
@@ -36,8 +35,21 @@
       <div id="body-content" ng-view></div>
 
       <footer>
-        <div id="contact" ng-style="Main.contact" ng-click="Main.showContactModal()">
-          <a href="">Con-<br>tact</a>
+        <div class="contact" ng-style="Main.contact" ng-mouseenter="Main.toggleContactInfo()" ng-if="!Main.contactExpanded">
+          <a href>Con-<br>tact</a>
+        </div>
+        <div class="contact expanded" ng-style="Main.contact" ng-mouseleave="Main.toggleContactInfo()" ng-if="Main.contactExpanded">
+          <ul class="list-inline">
+            <li>
+              <a href>Github</a>
+            </li>
+            <li>
+              <a href>LinkedIn</a>
+            </li>
+            <li>
+              <a href>Resume</a>
+            </li>
+          </ul>
         </div>
       </footer>
       
@@ -74,6 +86,7 @@
       <script src="bower_components/angular-resource/angular-resource.js"></script>
       <script src="bower_components/angular-cookies/angular-cookies.js"></script>
       <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+      <script src="bower_components/angular-tour/dist/angular-tour-tpls.min.js"></script>
       <!-- endbower -->
       <!-- // <script src="/bower_components/ngAnimate/js/angular-animate.min.js"></script> -->
       <script src="bower_components/angular-touch/angular-touch.js"></script>
@@ -92,13 +105,13 @@
 
           <script src="scripts/services/jsonFactory.js"></script>
           <script id="tour/tour.tpl.html" type="text/ng-template">
-            <div class="tour-tip">
+            <div class="tour-tip tooltip">
               <div class="tour-content-wrapper">
-                <p ng-bind="ttContent"></p>
-                <p class="tour-snippet" ng-bind="ttSnippet"></p>
-                <a ng-click="setCurrentStep(getCurrentStep() + 1)" ng-bind="ttNextLabel" class="small button tour-next-tip"></a>
-                <a ng-click="invokeTourAction(ttAction)">action!</a>
-                <a ng-click="closeTour()" class="tour-close-tip">×</a>
+                <p ng-bind-html="ttContent"></p>
+                <p class="tour-snippet" ng-if="!!ttSnippet" ng-bind-html="ttSnippet"></p>
+                <a ng-click="invokeTourAction(ttAction)" class="action">see it in action</a>
+                <a ng-click="setCurrentStep(getCurrentStep() + 1)" ng-bind="ttNextLabel" class="next"></a>
+                <a ng-click="closeTour()" class="close">×</a>
               </div>
             </div>
           </script>

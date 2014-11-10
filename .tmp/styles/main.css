@@ -8498,6 +8498,91 @@
 #logo_99.active {
   border: 1px solid #eeeeee;
 }
+#circle_100 {
+  width: 2000px;
+  height: 2000px;
+  margin-left: -1000px;
+  margin-top: -1000px;
+  z-index: 105;
+  -webkit-transform: rotate(300deg);
+  transform: rotate(300deg);
+}
+#circle_100.active-0 {
+  border: 1px solid white;
+}
+#circle_100.active-1 {
+  border: 3px solid #ffffff;
+}
+#circle_100.active-2 {
+  border: 2px solid #ff5500;
+}
+#circle_100.active-3 {
+  border-radius: 1000px;
+  border: 2px solid #ffffff;
+}
+#circle_100.active-4 {
+  border-radius: 1000px;
+  border: 2px solid #ffffff;
+}
+#circle_100.active-5 {
+  z-index: 0;
+  background-color: #000000;
+}
+#circle_100.edge {
+  border-width: 8px;
+  border-color: cyan;
+  border-radius: 1000px;
+  overflow: hidden;
+}
+#oval_100 {
+  width: 2000px;
+  height: 2000px;
+  margin-left: -1000px;
+  margin-top: -1000px;
+  z-index: 100;
+  -webkit-transform: rotate(-300deg);
+  transform: rotate(-300deg);
+}
+#oval_100.active-0 {
+  border: 1px solid white;
+}
+#oval_100.active-1 {
+  border: 12px solid #555555;
+}
+#oval_100.active-2 {
+  border: 2px solid #00afff;
+}
+#oval_100.active-3 {
+  border-radius: 100px;
+  border: 2px solid #ffffff;
+}
+#oval_100.active-4 {
+  border-radius: 1000px;
+  border: 2px solid #ffffff;
+}
+#oval_100.active-5 {
+  z-index: 0;
+  background-color: #000000;
+}
+#oval_100.edge {
+  border-width: 8px;
+  border-color: orange;
+  border-radius: 1000px;
+  overflow: hidden;
+}
+#logo_100 {
+  pointer-events: none;
+  z-index: 0;
+  width: 3000px;
+  height: 1000px;
+  margin-left: -1500px;
+  margin-top: -500px;
+  border: 1px solid #0d0d0d;
+  border-radius: 100px;
+}
+#logo_100.active {
+  border: 1px solid #eeeeee;
+}
 header concentric {
   height: 2000px;
   background-color: #0d0d0d;
@@ -8566,6 +8651,58 @@ header #concentric-oval {
   left: 50%;
   margin-left: -15px;
 }
+.tooltip {
+  color: #eeeeee;
+  padding: 10px;
+  border-radius: 7px;
+  background-color: #1b1b1b;
+  border: 1px solid #555555;
+}
+.tour-tip {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 2.5%;
+  max-height: 300px;
+  overflow: scroll;
+  z-index: 9999;
+  max-width: 350px;
+}
+.tour-tip p {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  letter-spacing: 1px;
+  font-weight: lighter;
+  font-size: 13px;
+}
+.tour-tip .tour-snippet {
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #0d0d0d;
+}
+.tour-tip .tour-snippet,
+.tour-tip .monospace {
+  letter-spacing: 0px;
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+.tour-tip .tab {
+  margin-left: 15px;
+}
+.tour-tip .next {
+  float: right;
+}
+.tour-tip .action {
+  cursor: pointer;
+}
+.tour-tip .close {
+  font-weight: lighter;
+  position: absolute;
+  top: 0%;
+  right: 3%;
+  color: #f5f5f5;
+}
+.tour-tip .close:hover {
+  opacity: 0.8;
+}
 h1 {
   font-weight: lighter;
   letter-spacing: 5px;
@@ -8586,8 +8723,13 @@ h2 .caps {
   text-transform: uppercase;
   font-size: 40px;
 }
+a {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: lighter;
+}
 a:hover {
   text-decoration: none;
+  color: #f5f5f5;
 }
 #body-content {
   border-left: 15px solid #0d0d0d;
@@ -8659,6 +8801,14 @@ a:hover {
   box-shadow: 0px 2px 10px 0px #000000;
   overflow: hidden;
   transition: opacity 400ms;
+}
+#body-content .img-zoom.tour-show {
+  overflow: visible;
+  visibility: visible;
+  opacity: 1;
+}
+#body-content .img-zoom.tour-show img {
+  opacity: 0.6;
 }
 #body-content .img-zoom.show {
   visibility: visible;
@@ -9761,7 +9911,7 @@ a:hover {
 #body-content #coder #coder-assets img:nth-child(n + 2) {
   margin-top: 15px;
 }
-footer #contact {
+footer .contact {
   position: fixed;
   margin-top: 100px;
   top: 88%;
@@ -9779,12 +9929,18 @@ footer #contact {
   box-shadow: 0px 0px 6px 3px #0d0d0d;
   transition: opacity 200ms;
   transition: box-shadow 200ms;
+  transition: width 500ms;
+  transition: margin-left 500ms;
 }
-footer #contact:hover {
+footer .contact:hover {
   opacity: 1;
   box-shadow: 0px 0px 0px 0px #0d0d0d;
 }
-footer #contact a {
+footer .contact.expanded {
+  width: 200px;
+  margin-left: -100px;
+}
+footer .contact a {
   margin: 0px;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: lighter;
@@ -9792,9 +9948,9 @@ footer #contact a {
   text-transform: lowercase;
   line-height: 1px;
 }
-footer #contact a:hover {
+footer .contact a:hover {
   text-decoration: none;
 }
-footer #contact a:hover h2 {
+footer .contact a:hover h2 {
   color: #f5f5f5;
 }

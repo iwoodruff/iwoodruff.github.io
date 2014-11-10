@@ -3,7 +3,7 @@
     <img ng-src="http://res.cloudinary.com/digbk5qam/image/upload/v1/{{ imgLrg }}" class="img-responsive" ng-style="galleryZoom.imgLrg">
   </div>
 
-  <div class="img-zoom" ng-class="{ 'show' : galleryZoom.showZoom }" ng-style="galleryZoom.zoomView">
+  <div class="img-zoom" ng-class="{ 'show' : galleryZoom.showZoom, 'tour-show' : Main.tourShowZoom }" ng-style="galleryZoom.zoomView">
     <img ng-src="http://res.cloudinary.com/digbk5qam/image/upload/v1/{{ imgZoom }}" ng-style="galleryZoom.imgZoom">
   </div>
 </div>

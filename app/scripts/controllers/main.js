@@ -5,6 +5,13 @@ angular.module('portfolioApp')
 
     var ctrl = this;
 
+    ctrl.contactExpanded = false;
+
+    ctrl.toggleContactInfo = function () {
+      ctrl.contactExpanded = !ctrl.contactExpanded;
+      console.log(ctrl.contactExpanded)
+    };
+
     ctrl.currentStep = 0;
 
     ctrl.postTour = function () {
@@ -15,15 +22,36 @@ angular.module('portfolioApp')
       console.log('step over!');
     };
 
+    ctrl.tourShowZoom = false;
+
+    ctrl.showZoomImg = function () {
+      ctrl.tourShowZoom = !ctrl.tourShowZoom;
+    };
+
     ctrl.tour = [
       {
-        body : "hey blah blah",
-        snippet : "blah blah blah blah"
+        body : "On scroll and click this directive iterates a variable <span class='monospace'>active</span> which toggles classes made in a recursive less loop.",
+        snippet : 
+        'div.circle-{{ $index }} ng-class="{ \'active\' : $index == {{ active }} }<br/><br/>' +
+        '.classLoop(@index) when (@index < 100) {<br/>' +
+          '<span class="tab"></span>#circle-@{ index } {<br/>' +
+          '<span class="tab"></span><span class="tab"></span>width: @index*20px;<br/>' +
+          '<span class="tab"></span><span class="tab"></span>height: @index*20px;<br/>' +
+          '<span class="tab"></span><span class="tab"></span>margin-left: -@index*10px;<br/>' +
+          '<span class="tab"></span><span class="tab"></span>margin-top: -@index*10px;<br/>' +
+          '<span class="tab"></span><span class="tab"></span>.rotate(@index * 3deg);<br/>' +
+          '<span class="tab"></span><span class="tab">&.active {<br/>' +
+          '<span class="tab"></span><span class="tab"></span><span class="tab"></span>border: 1px solid white;<br/>' +
+          '<span class="tab"></span><span class="tab"></span><span class="tab"></span>etc.<br/>' +
+          '<span class="tab"></span><span class="tab"></span>}<br/>' +
+          '<span class="tab"></span>}<br/>' +
+          '<span class="tab"></span>.classLoop(@index+1);<br/>' +
+          '}<br/>' +
+        '.classLoop(0);'
       },
       {
-        body : "",
-        snippet : "",
-        action : null
+        body : "The world doesn't need another jQuery plugin. But it could use some more angularJs shiny bits.<br/><br/>Using only angularJs' selectors and event handlers, this directive dynamically tracks and positions two differently resolutioned images to make an illusion of zooming. Fork it on <a href='http://github.com'>github.</a>",
+        snippet : ""
       },
       {
         body : "",
@@ -144,11 +172,5 @@ angular.module('portfolioApp')
         });
       }
     });
-
-    // var contactModal = $modal({ scope : $scope, template : 'views/partials/contactModal.html', container : 'body' });
-
-    // ctrl.showContactModal = function () {
-    //   ctrl.email = {}
-    // };
 
   });

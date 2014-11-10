@@ -1,3 +1,56 @@
-.tour-tip {
+.tooltip {
+  color: @gray-lighter;
+  padding: 10px;
+  border-radius: 7px;
+  background-color: @gray-darker;
+  border: 1px solid @gray;
+}
 
+.tour-tip {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 2.5%;
+  max-height:300px;
+  overflow: scroll;
+  z-index: 9999;
+  max-width: 350px;
+
+  p {
+    font-family: @font-family-sans-serif;
+    letter-spacing: 1px;
+    font-weight: lighter;
+    font-size: 13px;
+  }
+
+  .tour-snippet {
+    padding: 10px;
+    border-radius: 5px;
+    background-color: @gray-darkest;
+  }
+
+  .tour-snippet, .monospace {
+    letter-spacing: 0px;
+    font-family: @font-family-monospace;
+  }
+  .tab {
+    margin-left: 15px;
+  }
+  .next {
+    float: right;
+  }
+  .action {
+    cursor: pointer;
+  }
+  .close {
+    font-weight: lighter;
+    position: absolute;
+    top: 0%;
+    right: 3%;
+    color: @gray-lightest;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
 }
