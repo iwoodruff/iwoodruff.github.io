@@ -1,0 +1,136 @@
+@import 'vendor-prefixes.less';
+
+body {
+  margin: 0;
+  text-align: center;
+  overflow: hidden;
+}
+
+
+#facade-container {
+  svg {
+    margin: 0 auto;
+    position: absolute;
+    left: 50%;
+    margin-left: -50%;
+    opacity: 0;
+  }
+
+  &.painting {
+    cursor: pointer;
+  }
+
+  &.hand {
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
+    cursor: grab;
+  }
+
+  &.grab {
+    cursor: -moz-grabbing !important;
+    cursor: -webkit-grabbing !important;
+    cursor: grabbing !important;
+  }
+}
+
+#new {
+  display: block;
+  box-sizing: border-box;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -50px;
+  margin-top: -50px;
+  width: 100px;
+  height: 100px;
+  border: 1px solid black;
+  border-radius: 50%;
+  padding-top: 40px;
+  cursor: pointer;
+
+  &:hover {
+    border: 1px solid blue;
+  }
+}
+
+#controls {
+  box-sizing: border-box;
+  position: fixed;
+  bottom: -59px;
+  width: 100%;
+  z-index: 9999;
+  padding: 15px 30px;
+  height: 60px;
+  border-top: 1px solid black;
+  background-color: white;
+
+  &.open {
+    bottom: 0px !important;
+  }
+
+  .transition(bottom 1.3s linear);
+
+  #palette {
+    width: 371px;
+    position: relative;
+    margin: 0 auto;
+
+    div {
+      height: 30px;
+      width: 30px;
+      border-radius: 50%;
+      border: 1px solid black;
+      margin-right: 5px;
+      display: inline-block;
+      cursor: pointer;
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  #controls {
+    padding: 15px 5px;
+    height: 80px;
+    bottom: -79px;
+
+    #palette {
+      clear: both;
+      margin-top: 25px;
+    }
+  }
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+#share-modal {
+  background-color: white;
+  position: absolute;
+  width: 250px;
+  height: 100px;
+  margin-left: -125.5px;
+  left: 50%;
+  top: -100px;
+  border: 1px solid black;
+  box-sizing: border-box;
+  padding: 10px 20px;
+
+
+  .transition(top 1.3s);
+
+  textarea {
+    margin-top: 5px;
+    width: 200px;
+    margin: 0 auto;
+    display: block;
+  }
+
+  &.show {
+    top: 25px;
+  }
+}

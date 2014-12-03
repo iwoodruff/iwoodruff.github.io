@@ -1,4 +1,4 @@
-<section class="container" id="artist" about-section about-section-transition-target="#gallery-carousel">
+<section class="container" id="artist" about-section about-section-transition-target="#gallery-carousel" ng-mousemove="About.test($event)">
   <div class="row">
     <div class="col-sm-7">
       <ul id="gallery-carousel" rn-carousel rn-carousel-indicator rn-carousel-buffered style="height: 400px;" tourtip="{{ Main.tour[getCurrentStep()].body }}" tourtip-next-label="next: programmatic grid" tourtip-step="1" tour-action="Main.showZoomImg">

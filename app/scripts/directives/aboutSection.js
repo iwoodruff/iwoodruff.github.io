@@ -9,7 +9,7 @@ portfolioApp.directive('aboutSection', [function ($timeout) {
           windowHeight = browserWindow.innerHeight(),
           element = angular.element(element),
           elemOffset = element.offset().top,
-          elemHeight = (windowHeight * 1.1),
+          elemHeight = (windowHeight * 0.9),
           documentBody = angular.element(document),
           documentHeight = documentBody.height(),
           target = !!attrs.aboutSectionTransitionTarget && angular.element(attrs.aboutSectionTransitionTarget),

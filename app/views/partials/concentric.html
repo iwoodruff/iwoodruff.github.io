@@ -1,21 +1,43 @@
-<div id="logo">
-  <a href ng-click="radiate()"><h1 ng-mouseenter="shimmer()" ng-mouseleave="cancelShimmer()">I<span class="caps">saac</span> W<span class="caps">oodruff</span></h1></a>
-  <ul class="list-inline">
-    <a ng-click="openTour('#logo', 0, 0, 2500)">TOUR TEST</a>
-    <li><a href ng-click="radiate();" ng-mouseenter="shimmer();" ng-mouseleave="cancelShimmer();">Artist</a></li>
-    <li><a href ng-click="radiate();" ng-mouseenter="shimmer();" ng-mouseleave="cancelShimmer();">Nerd</a></li>
-    <li><a href ng-click="radiate();" ng-mouseenter="shimmer();" ng-mouseleave="cancelShimmer();">Coder</a></li>
-  </ul>
-
-  <div id="concentric-logo" tourtip="{{ Main.tour[getCurrentStep()].body }}" tourtip-next-label="next: image zooming" tourtip-placement="top" tour-snippet="{{ Main.tour[getCurrentStep()].snippet }}" tour-action="radiate" tourtip-step="0">
-    <div class="concentric" ng-repeat="i in logoLimit track by $index" id="logo_{{ $index }}" ng-class="{ 'active' : shimmerActive == {{ $index }} }"></div>
+<div id="concentric">
+  <div id="concentric-mask" ng-class="{ 'dulled' : Concentric.dulled }">
+    
   </div>
-</div>
+  <div id="logo" ng-style="Concentric.logoContainer">
+    <a href ng-click="radiate()">
+      <h1 ng-mouseenter="Concentric.shimmer(true)" ng-mouseleave="Concentric.endShimmer(true)">
+        I<span class="caps">saac</span> W<span class="caps">oodruff</span>
+      </h1>
+    </a>
+    <ul class="list-inline">
+      <a ng-click="openTour('#logo', 0, 0, 2500)">TOUR TEST</a>
+      <li><a href ng-click="Concentric.scrollTo('#artist');" ng-mouseenter="Concentric.shimmer();" ng-mouseleave="Concentric.endShimmer();">Artist</a></li>
+      <li><a href ng-click="Concentric.scrollTo('#nerd');" ng-mouseenter="Concentric.shimmer();" ng-mouseleave="Concentric.endShimmer();">Nerd</a></li>
+      <li><a href ng-click="Concentric.scrollTo('#coder');" ng-mouseenter="Concentric.shimmer();" ng-mouseleave="Concentric.endShimmer();">Coder</a></li>
+    </ul>
 
-<div id="concentric-circular">
-  <div id="circle_{{ $index }}" class="concentric" ng-class="{ 'active{{ '-' + random }}' : active >= {{ $index }}, 'edge' : active == {{ $index }} }" ng-repeat="i in circleLimit track by $index"></div>
-</div>
+    <div id="logo-container"
+         tourtip="{{ Main.tour[getCurrentStep()].body }}" 
+         tourtip-next-label="next: image zooming" 
+         tourtip-placement="top" 
+         tour-snippet="{{ Main.tour[getCurrentStep()].snippet }}" tour-action="radiate" tourtip-step="0">
+      <div class="concentric"
+          ng-repeat="i in Concentric.logoLimit track by $index" 
+          id="logo-{{ $index }}" 
+          ng-class="{ 'active' : (!Concentric.magicShimmer && Concentric.shimmerActive == {{ $index }}), 'magic-active' : (Concentric.magicShimmer && Concentric.shimmerActive == {{ $index }})  }"></div>
+    </div>
+  </div>
 
-<div id="concentric-oval">
-  <div id="oval_{{ $index + 5 }}" class="concentric" ng-class="{ 'active{{ '-' + random }}' : active >= {{ $index }}, 'edge' : active == {{ $index }} }" ng-repeat="i in ovalLimit track by $index"></div>
+  <div id="concentric-inner" ng-style="Concentric.inner">
+    <div id="inner-{{ $index }}"
+        class="concentric"
+        ng-class="{ 'active-{{ Concentric.random }}' : Concentric.active >= {{ $index }}, 'edge' : Concentric.active == {{ $index }}, 'dulled' : Concentric.dulled }"
+        ng-repeat="i in Concentric.innerLimit track by $index"></div>
+  </div>
+
+  <div id="concentric-outer" ng-style="Concentric.outer">
+    <div id="outer-{{ $index + 5 }}" 
+        class="concentric"  
+        ng-class="{ 'active{{ '-' + Concentric.random }}' : Concentric.active >= {{ $index }}, 'edge' : Concentric.active == {{ $index }}, 'dulled' : Concentric.dulled }" 
+        ng-repeat="i in Concentric.outerLimit track by $index"></div>
+  </div>
 </div>

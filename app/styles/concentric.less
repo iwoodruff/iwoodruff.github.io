@@ -1,14 +1,12 @@
 
 .loopingClass(@index) when (@index < 101) {
-  #circle_@{index} {
+  #inner-@{index} {
     width: @index*20px;
     height: @index*20px;
     margin-left: -@index*10px;
     margin-top: -@index*10px;
     z-index: @index + 5;
     .rotate(@index*3deg);
-    // background-color: white;
-
 
     &.active-0 {
       border: 1px solid white;
@@ -46,14 +44,13 @@
     }
   }
 
-  #oval_@{index} {
+  #outer-@{index} {
     width: @index*20px;
     height: @index*20px;
     margin-left: -@index*10px;
     margin-top: -@index*10px;
     z-index: @index;
     .rotate(@index*-3deg);
-
 
     &.active-0 {
       border: 1px solid white;
@@ -91,7 +88,7 @@
     }
   }
 
-  #logo_@{index} {
+  #logo-@{index} {
     pointer-events: none;
     z-index: 0;
     width: @index * 30px;
@@ -101,15 +98,13 @@
     // border: 1px solid lighten(@gray-darkest, @index * 2%);
     border: 1px solid @gray-darkest;
     border-radius: 100px;
-    // .transition(border 0.25s);
 
     &.active {
-      // border: 1px solid @gray-lighter;
+      border: 1px solid @gray-lighter;
     }
 
-    &.active {
-      // border: 1px solid darken(desaturate(spin(orange, @index * 36%), @index * 5%), @index + 1%);
-      border: 1px solid @gray-lighter;
+    &.magic-active {
+      border: 1px solid lighten(spin(orange, @index * 40%), @index * 4%);
     }
   }
 
@@ -121,13 +116,30 @@
 
 
 header {
-  concentric {
+  #concentric {
     height: 2000px;
-    background-color: @gray-darkest;
     top: 0;
     position: fixed;
     width: 100%;
     display: block;
+  }
+
+  #concentric-mask {
+    pointer-events: none;
+    height: 2000px;
+    top: 0;
+    background-color: black;
+    position: absolute;
+    z-index: 1999;
+    opacity: 0;
+    width: 100%;
+    display: block;
+
+    .transition(opacity 1.3s);
+
+    &.dulled {
+      opacity: 0.55;
+    }
   }
 
   #logo {
@@ -168,7 +180,7 @@ header {
       }
     }
 
-    #concentric-logo {
+    #logo-container {
       position: absolute;
       top: 50%;
       left: 50%;
@@ -182,7 +194,7 @@ header {
     // border-radius: 1000px;
   }
 
-  #concentric-circular {
+  #concentric-inner {
     position: absolute;
     width: 10px;
     height: 10px;
@@ -191,7 +203,7 @@ header {
     margin-left: -5px;
   }
 
-  #concentric-oval {
+  #concentric-outer {
     position: absolute;
     width: 30px;
     height: 10px;

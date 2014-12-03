@@ -3,6 +3,10 @@
 @import 'concentric.less';
 @import 'tour.less';
 
+body {
+  background-color: @gray-darkest;
+}
+
 h1 {
   font-weight: lighter;
   letter-spacing: 5px;
@@ -38,14 +42,16 @@ a {
 }
 
 #body-content {
-  border-left: 15px solid @gray-darkest;
-  border-right: 15px solid @gray-darkest;
-  border-top: 1px solid @gray;
-  box-shadow: 0px 10px 18px 15px @gray-darkest;
-  background-color: @gray-darker;
+  // border-top: 1px solid @gray;
+  // box-shadow: 0px 10px 18px 15px @gray-darkest;
+  // background-color: @gray-darker;
   margin-top: 2000px;
   position: relative;
   z-index: 2000;
+
+  .container {
+    background-color: rgba(27, 27, 27, 0.9);
+  }
 
   .page-header {
     margin-top: 0px;
@@ -271,6 +277,8 @@ a {
 
     #shoe-container {
       .img-container {
+        border-top: 3px solid @gray-lightest;
+        border-bottom: 3px solid @gray-lightest;
         position: relative;
         overflow: hidden;
         width: 100%;
