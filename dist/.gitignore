@@ -1,0 +1,14 @@
+node_modules
+.tmp
+.sass-cache
+.vagrant
+
+codekit-config.json
+backups
+
+bower_components
+
+.DS_Store
+npm-debug.log
+
+*.codekit
