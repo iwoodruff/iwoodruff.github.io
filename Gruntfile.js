@@ -383,7 +383,7 @@ module.exports = function (grunt) {
       pages: {
         options: {
           remote: 'git@github.com:iwoodruff/iwoodruff.github.io.git',
-          branch: 'gh-pages'
+          branch: 'master'
         }
       },
       local: {
