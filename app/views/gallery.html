@@ -1,0 +1,17 @@
+<div class="container" id="gallery">
+  <section class="row" gallery>
+    <div ng-repeat="image in Gallery.gallery">
+      <div class="col-xs-3 col-sm-offset-1">
+        <div class="panel panel-default">
+          <h2>{{ image.title }}</h2>
+          <h4>{{ image.dimensions }}</h4>
+          <h3>{{ image.descriptionHeader }}</h3>
+          <p ng-repeat="paragraph in image.descriptionBody">{{ paragraph }}</p>
+        </div>
+      </div>
+      <div class="col-xs-7 col-sm-offset-1">
+        <gallery-image class="gallery-image"></gallery-image>
+      </div>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,40 @@
+angularjs
+An intuitive and elegant force multiplier, I've happily used angularJs not only for this site, but for building a financial planning app, a scholarship's intranet, and countless interactive lists and forms. It makes coding an absolute pleasure.
+
+
+backbonejs 
+If jQuery was training wheels, BackboneJs was my first bike. Check out my General Assembly WDI final project written in Rails and BackboneJs. (Be gentile, it's running on a free heroku server and is therefore very slow).
+
+
+jquery
+A quick and dirty essential for most operations - though I'm proud that this site uses only AngularJs' jQLite.
+
+
+twig
+A PHP templating language. Used in tandem with Craft CMS, a Yii based CMS, it is powerful and legible.
+
+
+less
+Check out a tour of this site's code to see some recursive functions in Less.
+
+
+sass
+Like Less, it's an essential.
+
+
+
+salesforce
+An incredibly robust cloud CRM, the majority of my back-end work this past year has been writing event-triggers, controllers, and API endpoints in SalesForce's native Java-based Apex code.
+
+mongodb
+Though my experience is limited to making a waystation that migrated data from Stripe's API to a SalesForce database, it's easy to tell that flexible JSON based databases are the future for JavaScript-heads like myself.
+
+rails
+An old standard, I learned to code in Rails - very nostalgic about it. I would love to retap its power now that I know more of the internets. Check out my first Rails project.
+
+craft
+A Yii PHP based CMS, it provides a flexible and robust back-end that allows programmers to dive straight into building snappy front-ends.
+
+postgresql
+With Rails, PostgreSQL was 
+
