@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('portfolioApp')
-  .controller('MainCtrl', function ($location, $scope, GetJson, $anchorScroll, $filter, $modal) {
+  .controller('MainCtrl', function ($location, $scope, Data, $anchorScroll, $filter, $modal) {
 
     var ctrl = this;
 
@@ -65,13 +65,9 @@ angular.module('portfolioApp')
       },
     ]
 
-    GetJson.getGallery().then( function (data) {
-      ctrl.gallery = data;
-    });
+    ctrl.gallery = Data.gallery;
 
-    GetJson.getGrid().then( function (data) {
-      ctrl.gridCaptions = data;
-    });
+    ctrl.gridCaptions = Data.grid;
 
     ctrl.rotators = [
       'portfolio_gallery/shoe/shoe1.png',
