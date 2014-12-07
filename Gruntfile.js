@@ -31,7 +31,7 @@ module.exports = function (grunt) {
     less: {
       style: {
         files: {
-          'app/code-sample.css': 'app/styles/code-sample.less'
+          'app/style-guide.css': 'app/styles/style-guide.less'
         }
       }
     },
