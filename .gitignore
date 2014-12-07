@@ -6,8 +6,7 @@ node_modules
 codekit-config.json
 backups
 
-craft/license.txt
-
+bower_components
 
 .DS_Store
 npm-debug.log
